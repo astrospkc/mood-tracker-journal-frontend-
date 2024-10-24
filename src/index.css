@@ -1,0 +1,38 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Yusei+Magic&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  
+   font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
+  
+
+}
+.chonburi-regular {
+  font-family: "Chonburi", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 90px;
+}
+.chonburi-short {
+  font-family: "Chonburi", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+}
+
+.yusei-magic-regular {
+  font-family: "Yusei Magic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
