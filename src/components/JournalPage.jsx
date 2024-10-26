@@ -4,9 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { journalContext } from "../context/JournalContext";
 
+// const baseUrl = `${url-journal}/journals/fetchData`;
+// const query = encodeURIComponent("blasting the blast"); // Encodes spaces and special characters
+// const fullUrl = `${baseUrl}?query=${query}`;
+
+// console.log(fullUrl); //
+
 const JournalPage = () => {
   const navigate = useNavigate();
   const { journals, setJournals } = useContext(journalContext);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -100,7 +107,13 @@ const JournalPage = () => {
       <div className="w-full max-w-4xl space-y-4">
         {journals && journals.length > 0 ? (
           journals.map((journal) => (
-            <JournalCard key={journal._id} journal={journal} />
+            <>
+              <JournalCard
+                key={journal._id}
+                journal={journal}
+                className="hover:cursor-pointer"
+              />
+            </>
           ))
         ) : (
           <div className="text-center py-8 text-gray-600">
