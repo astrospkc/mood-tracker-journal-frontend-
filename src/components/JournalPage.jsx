@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import JournalCard from "./JournalCard";
 import { Link, useNavigate } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
@@ -15,7 +15,7 @@ const JournalPage = () => {
   const { journals, setJournals } = useContext(journalContext);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [setError] = useState(null);
 
   const handleBack = () => {
     navigate("/");
@@ -23,7 +23,7 @@ const JournalPage = () => {
 
   const fetchJournals = async () => {
     setIsLoading(true);
-    setError(null);
+    // setError(null);
     try {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -50,7 +50,7 @@ const JournalPage = () => {
       setJournals(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Error fetching journals:", error);
-      setError(error.message);
+      // setError(error.message);
     } finally {
       setIsLoading(false);
     }

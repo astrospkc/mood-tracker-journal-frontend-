@@ -4,11 +4,11 @@ import "./App.css";
 import Homepage from "./components/Homepage";
 import JournalPage from "./components/JournalPage";
 import WeekPage from "./components/WeekPage";
-import { ModalProvider } from "./context/ModalProvider";
+
 import WeekDay from "./components/WeekDay";
 import SignUp from "./components/SignUp";
 import Signin from "./components/Signin";
-import { userContext, UserProvider } from "./context/UserContext";
+import { userContext } from "./context/UserContext";
 import { useContext } from "react";
 
 function App() {

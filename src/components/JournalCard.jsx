@@ -1,12 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import card from "../images/theHome.jpg";
 import { journalContext } from "../context/JournalContext";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-
-JournalCard.propTypes = {
-  journal: PropTypes.object.isRequired,
-};
 
 const JournalCard = ({ journal }) => {
   console.log("journal: ", journal.title);
@@ -75,4 +71,7 @@ const JournalCard = ({ journal }) => {
   );
 };
 
+JournalCard.propTypes = {
+  journal: PropTypes.object.isRequired,
+};
 export default JournalCard;
