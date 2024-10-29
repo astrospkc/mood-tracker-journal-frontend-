@@ -2,25 +2,70 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { journalContext } from "../context/JournalContext";
+import { useParams } from "react-router-dom";
+
+import WeekDayCard from "./WeekDayCard";
+import { useLocation } from "react-router-dom";
 
 const WeekPage = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const location = useLocation();
+  const { journal } = location.state || {}; // Accessing the passed journal
+  const { clickedJournal, setClickedJournal } = useContext(journalContext);
+  setClickedJournal(journal);
+
+  console.log("clicked journal that is passed: ", clickedJournal);
+
   const handleBack = () => {
-    navigate("/journals");
+    console.log("clicked");
+    navigate(`/journals`);
   };
-  const { weekjournal_Arr, recentJournal } = useContext(journalContext);
 
-  const [ai_summary, setAi_summary] = useState();
-  console.log("recent journal: ", recentJournal);
+  const [ai_summary, setAi_Summary] = useState();
 
-  const summarize = async () => {
-    const query = recentJournal.title;
+  const { weekJournal_Arr, setWeekJournal_Arr } = useContext(journalContext);
+  console.log(weekJournal_Arr);
+
+  const allWeekJournal = async () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `${
-          import.meta.env.VITE_URL
-        }/weekJournals/summarizeJournal?query=${query}`,
+        `${import.meta.env.VITE_URL}/weekJournals/fetchJournal/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await res.json();
+      console.log("resu: ", data);
+      setWeekJournal_Arr(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    allWeekJournal();
+  }, [id]);
+
+  const handleSummarize = async () => {
+    setAi_Summary(null);
+    await summarize();
+  };
+
+  const handleAnotherDay = () => {
+    navigate(`/journals/week/${id}/day`);
+  };
+
+  const summarize = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_URL}/weekJournals/summarizeJournal/${id}`,
         {
           method: "GET",
           headers: {
@@ -32,69 +77,70 @@ const WeekPage = () => {
 
       const data = await res.json();
       console.log("summarized data: ", data);
-      setAi_summary(data);
+      setAi_Summary(data);
     } catch (error) {
       console.error(error);
     }
   };
-  useEffect(() => {
-    summarize();
-  }, [recentJournal]);
 
-  useEffect(() => {
-    console.log("ai summary: ", ai_summary);
-  }, [ai_summary]);
-  const handleSummarize = () => {
-    summarize();
-  };
+  // console.log("weekly summary ", ai_summary);
+  // let jsonstring = "";
+  // if (ai_summary) {
+  //   jsonstring = JSON.stringify(ai_summary);
+  //   const cleanedString = jsonstring.slice(10, -6);
+
+  //   console.log("cleaned string: ", typeof cleanedString);
+  // }
+
+  console.log("week journal arr: ", weekJournal_Arr);
 
   return (
     <>
-      {weekjournal_Arr && weekjournal_Arr.length > 0 ? (
-        <div className="flex flex-col   p-4 justify-center m-auto w-full items-center  overflow-y-scroll">
-          <div className="flex flex-row-reverse items-center  ">
-            <div className="flex flex-row items-center gap-4">
-              <BsArrowLeftCircleFill
-                onClick={handleBack}
-                className="text-xl md:text-3xl hover:text-yellow-50 hover:cursor-pointer"
-              />
-              <h1 className="chonburi-regular">The Daily Journaling</h1>
-            </div>
+      <div className="flex flex-col p-4 justify-center m-auto w-full items-center overflow-y-scroll">
+        <div className="flex flex-row-reverse items-center mb-4">
+          <div className="flex flex-row items-center gap-4">
+            <BsArrowLeftCircleFill
+              onClick={handleBack}
+              className="text-xl md:text-3xl hover:text-yellow-50 cursor-pointer"
+            />
+            <h1 className="chonburi-regular">The Daily Journaling</h1>
           </div>
-          <div className="grid grid-cols-3 gap-4 m-4 p-4">
-            {weekjournal_Arr &&
-              weekjournal_Arr.map((day) => {
-                return (
-                  <>
-                    <div key={day._id} className="">
-                      <h1>{day.title}</h1>
-                      <p>{day.body}</p>
-                    </div>
-                  </>
-                );
-              })}
-          </div>
+        </div>
 
-          {/* <Link to="/journals/week/weekday">
-            <div className="flex rounded-3xl p-4 bg-white">Day 1</div>
-          </Link> */}
-          <button
-            onClick={handleSummarize}
-            className="p-2 rounded-3xl bg-stone-500"
-          >
-            Summarize
-          </button>
-          {ai_summary && <p>{ai_summary}</p>}
-        </div>
-      ) : (
-        <div>
-          <Link to="/journals/week/weekday">
-            <div className="flex rounded-3xl p-4 bg-white">Day 1</div>
-          </Link>
-        </div>
-      )}
+        {weekJournal_Arr && weekJournal_Arr.length > 0 ? (
+          <div className="m-4 p-4">
+            <div className="grid grid-cols-3 gap-4">
+              {weekJournal_Arr.map((day) => (
+                <WeekDayCard key={day._id} day={day} id={id} />
+              ))}
+            </div>
+            <div className="flex flex-row gap-4 yusei-magic-regular">
+              <button
+                onClick={handleAnotherDay}
+                className="flex rounded-3xl p-4 my-4 bg-white"
+              >
+                Another day
+              </button>
+
+              <button
+                onClick={handleSummarize}
+                className=" flex rounded-3xl p-4 my-4 bg-stone-400"
+              >
+                Summarize
+              </button>
+            </div>
+
+            {ai_summary && <p className="mt-2">{ai_summary}</p>}
+          </div>
+        ) : (
+          <div>
+            <Link to="/journals/week/weekday">
+              <div className="flex rounded-3xl p-4 bg-white">Day 1</div>
+            </Link>
+          </div>
+        )}
+      </div>
     </>
   );
 };
-
 export default WeekPage;

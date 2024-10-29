@@ -5,51 +5,47 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const JournalCard = ({ journal }) => {
-  console.log("journal: ", journal.title);
   const navigate = useNavigate();
-  const {
-    setWeekJournal_Arr,
 
-    setRecentJournal,
-  } = useContext(journalContext);
+  // const journalArr = async (rec_journal) => {
+  //   const token = localStorage.getItem("token");
+  //   // console.log("token: ", token);
+  //   const id = rec_journal._id;
 
-  const journalArr = async (journal) => {
-    const token = localStorage.getItem("token");
-    // console.log("token: ", token);
-    const query = encodeURIComponent(journal.title);
-    try {
-      if (journal.journals?.length > 0) {
-        const res = await fetch(
-          `${
-            import.meta.env.VITE_URL
-          }/weekJournals/fetchJournal?query=${query}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const data = await res.json();
-        setWeekJournal_Arr([...data]);
-        // console.log("data: ", data);
-        // navigate("/journals/week/");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   try {
+  //     if (id) {
+  //       const res = await fetch(
+  //         `${import.meta.env.VITE_URL}/weekJournals/fetchJournal/${id}`,
+  //         {
+  //           method: "GET",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
+  //       const data = await res.json();
+  //       setWeekJournal_Arr([...data]);
+  //       // console.log("data: ", data);
+  //       // navigate("/journals/week/");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    journalArr(journal);
-    setRecentJournal(journal);
-    // console.log("week journal: ", weekjournal_Arr);
-  }, []);
+  // useEffect(() => {
+  //   journalArr(journal);
+  //   setRecentJournal(journal);
+  //   console.log("week journal: ", weekjournal_Arr);
+  // }, []);
 
   // handling the journal with weekdays journal
   const handleJournalCard = () => {
-    navigate("/journals/week");
+    // journalArr(journal);
+    navigate(`/journals/week/${journal._id}`, {
+      state: { journal: journal },
+    });
   };
 
   return (

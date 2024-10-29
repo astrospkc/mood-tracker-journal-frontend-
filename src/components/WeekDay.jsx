@@ -1,10 +1,102 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { useContext, useEffect, useState } from "react";
+import { journalContext } from "../context/JournalContext";
+import { useParams } from "react-router-dom";
+
 const WeekDay = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [mainJournal, setMainJournal] = useState();
+  const { dayJournal, setDayJournal, weekJournal_Arr, setWeekJournal_Arr } =
+    useContext(journalContext);
+
+  const location = useLocation();
+  const { weekdayJournal } = location.state || {};
+
+  console.log("day journal: ", weekdayJournal);
+  useEffect(() => {
+    const journal_with_id = async () => {
+      const token = localStorage.getItem("token");
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_URL}/journals/fetchData/${id}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const data = await res.json();
+        setMainJournal(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // console.log("Calling journal_with_id");
+    journal_with_id();
+  }, [id]);
+  console.log("main journal: ", mainJournal);
+
   const handleBack = () => {
-    navigate("/journals/week");
+    navigate(`/journals/week/${id}`);
   };
+  useEffect(() => {
+    if (weekdayJournal && mainJournal) {
+      setDayJournal({
+        main_title: mainJournal._id,
+        title: weekdayJournal.title,
+        body: weekdayJournal.body,
+      });
+    } else if (mainJournal) {
+      setDayJournal({
+        main_title: mainJournal._id,
+        title: "",
+        body: "",
+      });
+    }
+  }, [weekdayJournal, mainJournal]);
+
+  const weekJournalDay = async (dayJournal) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_URL}/weekJournals/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(dayJournal),
+        }
+      );
+
+      const data = await res.json();
+      setWeekJournal_Arr([data, ...weekJournal_Arr]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setDayJournal({ ...dayJournal, [e.target.name]: e.target.value });
+  };
+
+  const handleAdd = () => {
+    weekJournalDay(dayJournal);
+    console.log("add");
+    setTimeout(() => {
+      navigate(`/journals/week/${id}`);
+    }, 3000);
+  };
+  console.log("journals: ", weekJournal_Arr);
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
       <div className="flex  flex-row-reverse justify-around items-center">
@@ -13,7 +105,7 @@ const WeekDay = () => {
             onClick={handleBack}
             className="text-xl md:text-3xl hover:text-yellow-50 hover:cursor-pointer"
           />
-          <h1 className="chonburi-short ">Day 1 Journal</h1>
+          <h1 className="chonburi-short ">Journaling Day</h1>
         </div>
 
         <Link to="/">
@@ -21,17 +113,34 @@ const WeekDay = () => {
         </Link>
       </div>
 
-      <input type="text" className="m-4 p-4  rounded-xl bg-stone-300 w-2/3" />
+      <input
+        type="text"
+        name="title"
+        value={dayJournal.title}
+        placeholder="What's your day about?"
+        onChange={handleChange}
+        className="m-4 p-4  yusei-magic-regular rounded-xl bg-stone-300 w-2/3"
+      />
       <textarea
-        name=""
+        name="body"
         id=""
         rows={40}
         cols={80}
-        className="bg-stone-400 rounded-3xl shadow-lg shadow-stone-800 w-2/3 p-4"
+        value={dayJournal.body}
+        placeholder="Express your feelings and thoughts. Let's add some new chapters to our life"
+        onChange={handleChange}
+        className="bg-stone-400 rounded-3xl yusei-magic-regular shadow-lg textarea-placeholder text-black shadow-stone-800 w-2/3 p-4"
       ></textarea>
-      <div className="flex flex-row items-end">
-        <button className="bg-stone-200 rounded-3xl my-4 p-4">Add</button>
-        <button className="bg-stone-200 rounded-3xl my-4 p-4">Cancel</button>
+      <div className="flex flex-row items-end gap-4">
+        <button
+          onClick={handleAdd}
+          className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
+        >
+          Add
+        </button>
+        <button className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500">
+          Cancel
+        </button>
       </div>
     </div>
   );

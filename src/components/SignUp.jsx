@@ -1,18 +1,19 @@
-import { toastStore, useToast } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
+import { useToast } from "@chakra-ui/react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { userContext } from "../context/UserContext";
+
+import { UserContext } from "../context/UserContext";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  const { isAuthenticated, setIsAuthenticated } = useContext(userContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
   // default user
   const [user, setUser] = useState({
-    name: "rita",
-    email: "rita@gmail.com",
-    password: "rita",
+    name: "laya",
+    email: "laya@gmail.com",
+    password: "laya",
   });
 
   // loader
@@ -41,8 +42,8 @@ const SignUp = () => {
       setUser(data);
       setLoading(false);
       if (data.authtoken) {
-        setIsAuthenticated(true);
         localStorage.setItem("token", data.authtoken);
+        setIsAuthenticated(true);
 
         navigate("/");
       } else {
@@ -69,6 +70,7 @@ const SignUp = () => {
     <>
       <div className="flex flex-col justify-center items-center m-auto w-full h-full p-4 ">
         <div className="font-semibold rounded-xl  text-3xl my-4">Sign Up</div>
+        {loading ? <div>....loading</div> : <div></div>}
         <form
           action="submit"
           className="bg-yellow-500 p-10 rounded-xl shadow-lg shadow-stone-600"

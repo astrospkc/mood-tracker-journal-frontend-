@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import home from "../images/theHome.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { userContext } from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 const JournalPage = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(userContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {

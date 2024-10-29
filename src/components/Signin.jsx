@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import back from "../images/thebackground.jpg";
-import { userContext } from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 const Signin = () => {
   const navigate = useNavigate();
 
-  const { isAuthenticated, setIsAuthenticated } = useContext(userContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
   // the default email and password
   const [user, setUser] = useState({
-    email: "rita@gmail.com",
-    password: "rita",
+    email: "laya@gmail.com",
+    password: "laya",
   });
 
   // loader
