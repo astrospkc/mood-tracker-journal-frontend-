@@ -134,9 +134,12 @@ const WeekPage = () => {
           </div>
         ) : (
           <div>
-            <Link to="/journals/week/weekday">
-              <div className="flex rounded-3xl p-4 bg-white">Day 1</div>
-            </Link>
+            <div
+              onClick={handleAnotherDay}
+              className="flex rounded-3xl p-4 bg-white hover:bg-stone-500 hover:cursor-pointer"
+            >
+              Day 1
+            </div>
           </div>
         )}
       </div>

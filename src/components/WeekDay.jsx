@@ -13,6 +13,7 @@ const WeekDay = () => {
 
   const location = useLocation();
   const { weekdayJournal } = location.state || {};
+  const weekday_id = weekdayJournal._id;
 
   console.log("day journal: ", weekdayJournal);
   useEffect(() => {
@@ -95,7 +96,48 @@ const WeekDay = () => {
       navigate(`/journals/week/${id}`);
     }, 3000);
   };
+
+  const handleUpdate = async () => {
+    console.log("id: ", id);
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `${
+          import.meta.env.VITE_URL
+        }/weekJournals/updateDayJournal/${weekday_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(dayJournal),
+        }
+      );
+      const data = await res.json();
+      console.log("updated data: ", data);
+      const newUpdatedJournal = setWeekJournal_Arr(
+        weekJournal_Arr.map((w) => {
+          if (w._id === weekday_id) {
+            (w.title = data.title), (w.body = data.body);
+          }
+          return w;
+        })
+      );
+
+      setWeekJournal_Arr(newUpdatedJournal);
+
+      setTimeout(() => {
+        navigate(`/journals/week/${id}`);
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+    }
+    console.log("handling update");
+  };
+
   console.log("journals: ", weekJournal_Arr);
+  console.log("day journal id: ", weekdayJournal._id);
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
@@ -132,12 +174,22 @@ const WeekDay = () => {
         className="bg-stone-400 rounded-3xl yusei-magic-regular shadow-lg textarea-placeholder text-black shadow-stone-800 w-2/3 p-4"
       ></textarea>
       <div className="flex flex-row items-end gap-4">
-        <button
-          onClick={handleAdd}
-          className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
-        >
-          Add
-        </button>
+        {dayJournal.title.length > 0 ? (
+          <button
+            onClick={handleUpdate}
+            className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
+          >
+            Update
+          </button>
+        ) : (
+          <button
+            onClick={handleAdd}
+            className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
+          >
+            Add
+          </button>
+        )}
+
         <button className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500">
           Cancel
         </button>

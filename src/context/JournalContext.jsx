@@ -10,9 +10,6 @@ export const JournalProvider = ({ children }) => {
   // journals for a week for any journal
   const [weekJournal_Arr, setWeekJournal_Arr] = useState([]);
 
-  // recently click week journal
-  const [recentJournal, setRecentJournal] = useState();
-
   // creating a journal
   const [createJournal, setCreateJournal] = useState({
     title: "",
