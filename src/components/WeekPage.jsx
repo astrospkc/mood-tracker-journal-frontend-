@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 import WeekDayCard from "./WeekDayCard";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const WeekPage = () => {
   const navigate = useNavigate();
@@ -30,17 +31,16 @@ const WeekPage = () => {
   const allWeekJournal = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(
+      const res = await axios.get(
         `${import.meta.env.VITE_URL}/weekJournals/fetchJournal/${id}`,
         {
-          method: "GET",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      const data = await res.json();
+      const data = res.data;
       console.log("resu: ", data);
       setWeekJournal_Arr(data);
     } catch (error) {
@@ -66,10 +66,9 @@ const WeekPage = () => {
   const summarize = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(
+      const res = await axios.get(
         `${import.meta.env.VITE_URL}/weekJournals/summarizeJournal/${id}`,
         {
-          method: "GET",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -77,7 +76,7 @@ const WeekPage = () => {
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       console.log("summarized data: ", data);
       setAi_Summary(data);
     } catch (error) {

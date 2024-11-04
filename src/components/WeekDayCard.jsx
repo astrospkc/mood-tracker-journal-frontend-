@@ -22,12 +22,11 @@ const WeekDayCard = (props) => {
     try {
       console.log("day id to confirm : ", day._id);
       if (day) {
-        const res = await fetch(
+        const res = await axios.delete(
           `${import.meta.env.VITE_URL}/weekJournals/deleteDayJournal/${
             day._id
           }`,
           {
-            method: "DELETE",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { UserContext } from "../context/UserContext";
-
+import axios from "axios";
 const SignUp = () => {
   const navigate = useNavigate();
   const toast = useToast();
@@ -22,22 +22,21 @@ const SignUp = () => {
   const signup = async () => {
     try {
       setLoading(true);
-      const res = await fetch(
+      const res = await axios.post(
         `${import.meta.env.VITE_URL}/api/auth/createuser`,
         {
-          method: "POST",
+          name: user.name,
+          email: user.email,
+          password: user.password,
+        },
+        {
           headers: {
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            name: user.name,
-            email: user.email,
-            password: user.password,
-          }),
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       console.log("signed up user data:  ", data);
       setUser(data);
 

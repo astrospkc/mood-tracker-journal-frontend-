@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import back from "../images/thebackground.jpg";
 import { UserContext } from "../context/UserContext";
+import axios from "axios";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -19,18 +20,20 @@ const Signin = () => {
   // aigning in to the journal
   const signin = async () => {
     setLoading(true);
-    const res = await fetch(`${import.meta.env.VITE_URL}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
+    const res = await axios.post(
+      `${import.meta.env.VITE_URL}/api/auth/login`,
+      {
         email: user.email,
         password: user.password,
-      }),
-    });
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    const data = await res.json();
+    const data = res.data;
     console.log("user signin data: ", data);
     console.log("authtoken generated when signed in : ", data.authtoken);
     setUser(data);

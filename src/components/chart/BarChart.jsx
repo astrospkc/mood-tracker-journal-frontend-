@@ -27,6 +27,7 @@ export const options = {
 };
 
 const BarChart = (data) => {
+  console.log(data);
   const labels = [
     "anger",
     "joy",

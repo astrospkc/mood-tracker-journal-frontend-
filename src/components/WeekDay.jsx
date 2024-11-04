@@ -5,6 +5,7 @@ import { journalContext } from "../context/JournalContext";
 import { useParams } from "react-router-dom";
 // import debounce from "lodash.debounce";
 import debounce from "../miscellaneous/debounce";
+import axios from "axios";
 
 const WeekDay = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const WeekDay = () => {
   const location = useLocation();
   let { weekdayJournal } = location.state || {};
   const { isAnotherDay } = location.state || {};
-  console.log("isAnotherDay ", isAnotherDay);
+  // console.log("isAnotherDay ", isAnotherDay);
   if (isAnotherDay) {
     weekdayJournal = {
       title: "",
@@ -43,10 +44,9 @@ const WeekDay = () => {
     const journal_with_id = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch(
+        const res = await axios.get(
           `${import.meta.env.VITE_URL}/journals/fetchData/${id}`,
           {
-            method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const WeekDay = () => {
           }
         );
 
-        const data = await res.json();
+        const data = res.data;
         setMainJournal(data);
       } catch (error) {
         console.error(error);
@@ -123,28 +123,23 @@ const WeekDay = () => {
   const weekJournalDay = async (dayJournal) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(
+      const res = await axios.post(
         `${import.meta.env.VITE_URL}/weekJournals/create`,
+        dayJournal,
         {
-          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(dayJournal),
         }
       );
-
       if (!res.ok) {
         throw new Error(`Error adding journal entry: ${res.statusText}`);
       }
-
-      const data = await res.json();
+      const data = res.data;
       console.log("New journal added:", data);
-
       // Update state with the new entry
       setWeekJournal_Arr((prev) => [data, ...prev]);
-
       // Clear input fields after adding
       setDayJournal({ main_title: id, title: "", body: "" });
     } catch (error) {
@@ -175,17 +170,16 @@ const WeekDay = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(
+      const res = await axios.put(
         `${import.meta.env.VITE_URL}/weekJournals/updateDayJournal/${
           weekdayJournal._id
         }`,
+        dayJournal, // The data to be sent in the request body
         {
-          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(dayJournal),
         }
       );
 
@@ -193,7 +187,7 @@ const WeekDay = () => {
         throw new Error(`Error updating journal entry: ${res.statusText}`);
       }
 
-      const data = await res.json();
+      const data = res.data;
       console.log("Updated data:", data);
 
       setWeekJournal_Arr((prev) =>

@@ -1,41 +1,39 @@
-import { a } from "framer-motion/client";
 import React, { useEffect, useState } from "react";
 import BarChart from "./chart/BarChart";
+import axios from "axios";
 
 const WeekAnalysis = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null); // Added error state
 
   const fetchData = async () => {
     setIsLoading(true);
-    // setError(null);
+    setError(null); // Reset error state
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("No authentication token found");
       }
 
-      const res = await fetch(
+      const res = await axios.get(
         `${import.meta.env.VITE_URL}/journals/fetchData`,
         {
-          method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Fixed typo in "authorization"
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
+      console.log("res.data", res.data); // Fixed typo
 
-      const result = await res.json();
+      const result = res.data;
       console.log("data obtained in week analysis: ", result);
       setData(Array.isArray(result) ? result : []);
     } catch (error) {
       console.error("Error fetching journals:", error);
-      // setError(error.message);
+      setError(error.message); // Set error message
     } finally {
       setIsLoading(false);
     }
@@ -44,22 +42,25 @@ const WeekAnalysis = () => {
   useEffect(() => {
     console.log("Fetching journals");
     fetchData();
-    return () => {
-      console.log("");
-    };
-  }, []);
+  }, []); // No cleanup needed
 
-  console.log("data: ", data);
   const feels = data.map((d) => d.emotions);
-  console.log("feels: ", feels);
+
+  // Ensure emotions are valid JSON strings before parsing
   let arr = [];
   for (let i = 0; i < feels.length; i++) {
-    arr.push(JSON.parse(feels[i]));
+    try {
+      arr.push(JSON.parse(feels[i]));
+    } catch (e) {
+      console.error("Error parsing emotions:", e);
+      arr.push(null); // Push null or handle the error as needed
+    }
   }
-  console.log("arr: ", arr);
 
   return (
     <>
+      {isLoading && <p>Loading...</p>} {/* Loading indicator */}
+      {error && <p>Error: {error}</p>} {/* Display error message */}
       <div>
         <BarChart data={arr} />
       </div>

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { journalContext } from "../context/JournalContext";
 import { Button } from "@chakra-ui/react";
+import axios from "axios";
 
 const JournalPage = () => {
   const navigate = useNavigate();
@@ -29,22 +30,22 @@ const JournalPage = () => {
         throw new Error("No authentication token found");
       }
 
-      const res = await fetch(
+      const res = await axios.get(
         `${import.meta.env.VITE_URL}/journals/fetchData`,
         {
-          method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Fixed typo in "authorization"
+            Authorization: `Bearer ${token}`, // Ensure token is provided correctly
           },
         }
       );
+      console.log(res.data);
 
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
+      // if (!res.ok) {
+      //   throw new Error(`HTTP error! status: ${res.status}`);
+      // }
 
-      const data = await res.json();
+      const data = res.data;
       console.log("data obtained in journals: ", data);
       setJournals(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -66,22 +67,21 @@ const JournalPage = () => {
   const createWeekJournal = async (title) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(
+      const res = await axios.post(
         `${import.meta.env.VITE_URL}/journals/addJournal`,
         {
-          method: "POST",
+          title: title,
+          journals: [],
+        },
+        {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({
-            title: title,
-            journals: [],
-          }),
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       setJournals([data, ...journals]);
       setCreateJournal(data);
     } catch (error) {

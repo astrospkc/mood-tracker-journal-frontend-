@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
 import card from "../images/theHome.jpg";
-import { journalContext } from "../context/JournalContext";
+
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { BiSolidTrashAlt } from "react-icons/bi";
+import axios from "axios";
 
 const JournalCard = ({ journal }) => {
   const navigate = useNavigate();
@@ -20,10 +20,9 @@ const JournalCard = ({ journal }) => {
     const token = localStorage.getItem("token");
     console.log("journal to delete: ", journal._id);
     try {
-      const res = await fetch(
+      const res = await axios.delete(
         `${import.meta.env.VITE_URL}/journals/deleteJournal/${journal._id}`,
         {
-          method: "DELETE",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
