@@ -11,7 +11,7 @@ import Signin from "./components/Signin";
 
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
-import Header from "./components/Header";
+
 import WeekAnalysis from "./components/WeekAnalysis";
 
 function App() {
@@ -21,10 +21,6 @@ function App() {
     <>
       <div className="w-screen h-screen bg-yellow-300 overflow-y-scroll">
         <BrowserRouter>
-          {/* <div className="bg-transparent m-4">
-            <Header />
-          </div> */}
-
           <Routes>
             <Route path="/" element={<Homepage />} />
             {isAuthenticated ? (

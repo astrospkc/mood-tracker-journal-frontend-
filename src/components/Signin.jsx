@@ -9,8 +9,8 @@ const Signin = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
   // the default email and password
   const [user, setUser] = useState({
-    email: "laya@gmail.com",
-    password: "laya",
+    email: "maya@gmail.com",
+    password: "maya",
   });
 
   // loader
