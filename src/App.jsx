@@ -11,14 +11,20 @@ import Signin from "./components/Signin";
 
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
+import Header from "./components/Header";
+import WeekAnalysis from "./components/WeekAnalysis";
 
 function App() {
   const { isAuthenticated } = useContext(UserContext);
   console.log("isAuthenticated: ", isAuthenticated);
   return (
     <>
-      <div className="w-screen h-screen bg-yellow-300">
+      <div className="w-screen h-screen bg-yellow-300 overflow-y-scroll">
         <BrowserRouter>
+          {/* <div className="bg-transparent m-4">
+            <Header />
+          </div> */}
+
           <Routes>
             <Route path="/" element={<Homepage />} />
             {isAuthenticated ? (
@@ -26,6 +32,7 @@ function App() {
                 <Route path="/journals" element={<JournalPage />} />
                 <Route path="/journals/week/:id" element={<WeekPage />} />
                 <Route path="/journals/week/:id/day" element={<WeekDay />} />
+                <Route path="/weeklyAnalysis" element={<WeekAnalysis />} />
                 {/* <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<Signin />} /> */}
               </>

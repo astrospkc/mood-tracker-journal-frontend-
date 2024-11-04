@@ -58,7 +58,9 @@ const WeekPage = () => {
   };
 
   const handleAnotherDay = () => {
-    navigate(`/journals/week/${id}/day`);
+    console.log("navigation start");
+    navigate(`/journals/week/${id}/day`, { state: { isAnotherDay: true } });
+    console.log("navigation end");
   };
 
   const summarize = async () => {
@@ -82,16 +84,6 @@ const WeekPage = () => {
       console.error(error);
     }
   };
-
-  // console.log("weekly summary ", ai_summary);
-  // let jsonstring = "";
-  // if (ai_summary) {
-  //   jsonstring = JSON.stringify(ai_summary);
-  //   const cleanedString = jsonstring.slice(10, -6);
-
-  //   console.log("cleaned string: ", typeof cleanedString);
-  // }
-
   console.log("week journal arr: ", weekJournal_Arr);
 
   return (
@@ -117,14 +109,14 @@ const WeekPage = () => {
             <div className="flex flex-row gap-4 yusei-magic-regular">
               <button
                 onClick={handleAnotherDay}
-                className="flex rounded-3xl p-4 my-4 bg-white"
+                className="flex rounded-3xl p-4 my-4 bg-white hover:bg-yellow-500"
               >
                 Another day
               </button>
 
               <button
                 onClick={handleSummarize}
-                className=" flex rounded-3xl p-4 my-4 bg-stone-400"
+                className=" flex rounded-3xl p-4 my-4 bg-stone-400 hover:bg-yellow-500"
               >
                 Summarize
               </button>

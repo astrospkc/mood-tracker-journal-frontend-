@@ -8,7 +8,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
+  const { setIsAuthenticated } = useContext(UserContext);
   // default user
   const [user, setUser] = useState({
     name: "laya",
@@ -40,12 +40,13 @@ const SignUp = () => {
       const data = await res.json();
       console.log("signed up user data:  ", data);
       setUser(data);
-      setLoading(false);
+
       if (data.authtoken) {
         localStorage.setItem("token", data.authtoken);
         setIsAuthenticated(true);
-
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       } else {
         alert("fill up all the spaces");
       }
@@ -57,6 +58,8 @@ const SignUp = () => {
         isClosable: true,
       });
       console.error("error: ", error);
+    } finally {
+      setLoading(false);
     }
   };
 

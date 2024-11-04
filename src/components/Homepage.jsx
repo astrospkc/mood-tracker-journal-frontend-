@@ -1,34 +1,35 @@
-import { useContext } from "react";
 import home from "../images/theHome.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+
+import Header from "./Header.jsx";
+import { useState } from "react";
 
 const JournalPage = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
-  const navigate = useNavigate();
+  const [showNavbar, setShowNavbar] = useState(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
-    navigate("/");
+  const handleScroll = () => {
+    if (window.scrollY > 1) {
+      setShowNavbar(true);
+    } else {
+      setShowNavbar(false);
+    }
   };
 
-  const spanClass =
-    "  rounded-full p-2 text-center bg-gradient-to-tr from-yellow-200 to-yellow-700 shadow-lg shadow-gray-500 hover:cursor-pointer ";
+  window.addEventListener("scroll", handleScroll);
+
   return (
     <>
-      <div className="flex w-full h-full justify-center bg-stone-500">
-        <div className="relative ">
+      <div className="flex w-full h-full justify-center bg-yellow-500 overflow-y-scroll md:overflow-y-hidden">
+        <div className="relative flex-col justify-center items-center  ">
           <img
             src={home}
             alt="the home page "
-            className="opacity-50 rounded-full h-full shadow-lg shadow-gray-500 "
+            className="opacity-50 rounded-full  mt-10 h-full shadow-lg shadow-stone-900 "
           />
-          <div className=" absolute top-1/4 ">
+          <div className="absolute top-1/4 ">
             <h1 className="chonburi-regular text-stone-900 text-center">
               MOOD-TRACKER JOURNAL
             </h1>
-            <p className="text-center text-stone-600  text-2xl">
+            <p className="text-center text-white  text-2xl yusei-magic-regular">
               {" "}
               Get your weekly summarized{" "}
               <span className="rounded-full bg-yellow-300 border-2 border-black p-3">
@@ -38,36 +39,26 @@ const JournalPage = () => {
             </p>
           </div>
         </div>
-        <div className="md:absolute sticky m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left ">
-          {isAuthenticated ? (
-            <div className="flex gap-4">
-              <span className={`${spanClass}`}>Home</span>
-              <span className={`${spanClass}`}>Week Analysis</span>
-              <span className={`${spanClass}`}>
-                <Link to="/journals">Journals</Link>
-              </span>
-              <button
-                onClick={handleLogout}
-                className="p-2 bg-stone-500 rounded-3xl hover:bg-yellow-100"
-              >
-                Logout
-              </button>
+        <div
+          className={` absolute   m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
+        >
+          {/* {
+            <div className="md:hidden">
+              {clicked ? (
+                <BsFillArrowDownSquareFill
+                  onClick={handleToggle}
+                  className="text-xl "
+                />
+              ) : (
+                <BsFillArrowRightSquareFill
+                  onClick={handleToggle}
+                  className="text-xl"
+                />
+              )}
             </div>
-          ) : (
-            <div className="flex gap-4">
-              <span className={`${spanClass}`}>Home</span>
-              <span className={`${spanClass}`}>Week Analysis</span>
-              <span className={`${spanClass}`}>
-                <Link to="/journals">Journals</Link>
-              </span>
-              <span className={`${spanClass}`}>
-                <Link to="/signin">SignIn</Link>
-              </span>
-              <span className={`${spanClass}`}>
-                <Link to="/signup">SignUp</Link>
-              </span>
-            </div>
-          )}
+          } */}
+          {/* {clicked && <Header />} */}
+          <Header />
         </div>
       </div>
     </>

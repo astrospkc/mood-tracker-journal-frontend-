@@ -6,6 +6,7 @@ import { UserProvider } from "./context/UserProvider.jsx";
 import App from "./App.jsx";
 import "./index.css";
 import { JournalProvider } from "./context/JournalContext.jsx";
+import { RefProvider } from "./context/RefProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,7 +14,9 @@ createRoot(document.getElementById("root")).render(
       <ChakraProvider>
         <JournalProvider>
           <ModalProvider>
-            <App className="yusei-magic-regular" />
+            <RefProvider>
+              <App className="yusei-magic-regular" />
+            </RefProvider>
           </ModalProvider>
         </JournalProvider>
       </ChakraProvider>

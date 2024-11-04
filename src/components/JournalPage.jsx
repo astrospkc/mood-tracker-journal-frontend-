@@ -58,6 +58,9 @@ const JournalPage = () => {
   useEffect(() => {
     console.log("Fetching journals");
     fetchJournals();
+    return () => {
+      console.log("");
+    };
   }, []); // Added setJournals as dependency
 
   const createWeekJournal = async (title) => {
