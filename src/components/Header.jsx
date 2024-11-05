@@ -62,15 +62,17 @@ const Header = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col md:flex-row gap-4">
-          <span className={`${spanClass}`}>Home</span>
+        <div className={`${clicked ? "block  md:flex " : "hidden md:flex"}`}>
+          <div className="flex flex-col md:flex-row gap-4">
+            <span className={`${spanClass}`}>Home</span>
 
-          <span className={`${spanClass}`}>
-            <Link to="/signin">SignIn</Link>
-          </span>
-          <span className={`${spanClass}`}>
-            <Link to="/signup">SignUp</Link>
-          </span>
+            <span className={`${spanClass}`}>
+              <Link to="/signin">SignIn</Link>
+            </span>
+            <span className={`${spanClass}`}>
+              <Link to="/signup">SignUp</Link>
+            </span>
+          </div>
         </div>
       )}
     </>
