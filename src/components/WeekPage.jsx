@@ -8,6 +8,7 @@ import WeekDayCard from "./WeekDayCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import { div, li } from "framer-motion/client";
 
 const WeekPage = () => {
   const navigate = useNavigate();
@@ -84,7 +85,12 @@ const WeekPage = () => {
       console.error(error);
     }
   };
+  let parsed_summary;
   console.log("week journal arr: ", weekJournal_Arr);
+  if (ai_summary) {
+    parsed_summary = JSON.parse(ai_summary);
+  }
+  console.log("ai summary: ", parsed_summary);
 
   return (
     <>
@@ -127,7 +133,20 @@ const WeekPage = () => {
               </button>
             </div>
 
-            {ai_summary && <p className="mt-2">{ai_summary}</p>}
+            {ai_summary && parsed_summary && (
+              <div className="mt-2 p-3 rounded-3xl bg-yellow-100 w-fit">
+                <ul>
+                  <li>anger: {parsed_summary.anger}</li>
+                  <li>adventurous: {parsed_summary.adventurous}</li>
+                  <li>chilled: {parsed_summary.chilled}</li>
+                  <li>happiness: {parsed_summary.happiness}</li>
+                  <li>joy: {parsed_summary.joy}</li>
+                  <li>sadness: {parsed_summary.sadness}</li>
+                  <li>loneliness: {parsed_summary.loneliness}</li>
+                  <li>overall: {parsed_summary.overall}</li>
+                </ul>
+              </div>
+            )}
           </div>
         ) : (
           <div>
