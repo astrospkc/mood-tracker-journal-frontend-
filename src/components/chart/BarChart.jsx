@@ -38,17 +38,19 @@ const BarChart = (data) => {
     "loneliness",
   ];
 
-  console.log("data in week analysis: ");
-
-  const values = [
-    data.data[0].anger,
-    data.data[0].joy,
-    data.data[0].sadness,
-    data.data[0].happiness,
-    data.data[0].chilled,
-    data.data[0].adventurous,
-    data.data[0].loneliness,
-  ];
+  console.log("data in week analysis: ", data);
+  let values = [];
+  if (data && data.data.length > 0) {
+    values = [
+      data.data[0].anger,
+      data.data[0].joy,
+      data.data[0].sadness,
+      data.data[0].happiness,
+      data.data[0].chilled,
+      data.data[0].adventurous,
+      data.data[0].loneliness,
+    ];
+  }
   const emotions_data = {
     labels,
     datasets: [

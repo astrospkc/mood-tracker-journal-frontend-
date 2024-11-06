@@ -23,6 +23,8 @@
   font-weight: 400;
   font-style: normal;
   font-size: 90px;
+  text-shadow: 2px 4px 10px rgba(12, 8, 8, 0.5);
+  
 }
 .chonburi-short {
   font-family: "Chonburi", serif;

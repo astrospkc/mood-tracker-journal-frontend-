@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BiSolidTrashAlt } from "react-icons/bi";
+import axios from "axios";
 
 const WeekDayCard = (props) => {
   const { day, id } = props;

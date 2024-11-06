@@ -1,10 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  BsFillArrowLeftSquareFill,
-  BsFillArrowRightSquareFill,
-} from "react-icons/bs";
+import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { BsFillArrowDownSquareFill } from "react-icons/bs";
 
 const Header = () => {
@@ -22,7 +19,7 @@ const Header = () => {
   };
 
   const spanClass =
-    "  rounded-full p-2 text-center bg-gradient-to-tr from-yellow-200 to-yellow-700 shadow-lg shadow-gray-500 hover:cursor-pointer ";
+    "  rounded-full p-2 text-center bg-gradient-to-tr from-yellow-200 to-yellow-700 shadow-lg shadow-gray-800 hover:cursor-pointer  ";
 
   console.log("clicked: ", clicked);
   return (
@@ -45,18 +42,20 @@ const Header = () => {
 
       {isAuthenticated ? (
         <div className={`${clicked ? "block  md:flex " : "hidden md:flex"}`}>
-          <div className="flex flex-col md:flex-row gap-4">
-            <span className={`${spanClass}`}>Home</span>
-            <span className={`${spanClass}`}>
+          <div className="flex flex-col md:flex-row gap-4 yusei-magic-regular ">
+            <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
+              <Link to="/">Home</Link>
+            </span>
+            <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900 hover:cursor-pointer  hover:scale-95">
               <Link to="/weeklyAnalysis">Week Analysis</Link>
             </span>
 
-            <span className={`${spanClass}`}>
+            <span className="p-2 bg-orange-300  rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900 hover:cursor-pointer  hover:scale-95">
               <Link to="/journals">Journals</Link>
             </span>
             <button
               onClick={handleLogout}
-              className="p-2 bg-stone-500 rounded-3xl hover:bg-yellow-100"
+              className="p-2 bg-stone-500 rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900  hover:scale-95"
             >
               Logout
             </button>

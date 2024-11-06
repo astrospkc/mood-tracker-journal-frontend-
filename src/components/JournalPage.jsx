@@ -5,6 +5,7 @@ import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { journalContext } from "../context/JournalContext";
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
+import Header from "./Header";
 
 const JournalPage = () => {
   const navigate = useNavigate();
@@ -112,6 +113,11 @@ const JournalPage = () => {
 
   return (
     <div className="flex flex-col bg-yellow-100 p-4 justify-center m-auto w-full items-center overflow-y-scroll min-h-screen">
+      <div
+        className={`   m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
+      >
+        <Header />
+      </div>
       <div className="flex flex-row items-center gap-4">
         <BsArrowLeftCircleFill
           onClick={handleBack}

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import BarChart from "./chart/BarChart";
 import axios from "axios";
+import { journalContext } from "../context/JournalContext";
+import Header from "./Header";
 
 const WeekAnalysis = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null); // Added error state
+  const { journals } = useContext(journalContext);
 
+  console.log("journals in weekly analysis: ", journals);
   const fetchData = async () => {
     setIsLoading(true);
     setError(null); // Reset error state
@@ -39,28 +43,39 @@ const WeekAnalysis = () => {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     console.log("Fetching journals");
     fetchData();
   }, []); // No cleanup needed
-
-  const feels = data.map((d) => d.emotions);
-
-  // Ensure emotions are valid JSON strings before parsing
   let arr = [];
-  for (let i = 0; i < feels.length; i++) {
-    try {
-      arr.push(JSON.parse(feels[i]));
-    } catch (e) {
-      console.error("Error parsing emotions:", e);
-      arr.push(null); // Push null or handle the error as needed
+  if (data) {
+    const feels = data.map((d) => d.emotions);
+
+    for (let i = 0; i < feels.length; i++) {
+      try {
+        arr.push(JSON.parse(feels[i]));
+      } catch (e) {
+        console.error("Error parsing emotions:", e);
+        arr.push(null); // Push null or handle the error as needed
+      }
     }
   }
 
+  // Ensure emotions are valid JSON strings before parsing
+
   return (
     <>
+      <div
+        className={`   m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
+      >
+        <Header />
+      </div>
       {isLoading && <p>Loading...</p>} {/* Loading indicator */}
       {error && <p>Error: {error}</p>} {/* Display error message */}
+      <div className="chonburi-regular text-cyan-900 text-center">
+        <h1>Weekly Analysis</h1>
+      </div>
+      {/* gather all the journals here */}
       <div>
         <BarChart data={arr} />
       </div>

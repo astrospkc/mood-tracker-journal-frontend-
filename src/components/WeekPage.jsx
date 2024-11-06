@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import WeekDayCard from "./WeekDayCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
 
 const WeekPage = () => {
   const navigate = useNavigate();
@@ -87,7 +88,12 @@ const WeekPage = () => {
 
   return (
     <>
-      <div className="flex flex-col p-4 justify-center m-auto w-full items-center overflow-y-scroll">
+      <div className="flex flex-col p-4 justify-center m-auto w-full items-center overflow-y-scroll ">
+        <div
+          className={`    m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
+        >
+          <Header />
+        </div>
         <div className="flex flex-row-reverse items-center mb-4">
           <div className="flex flex-row items-center gap-4">
             <BsArrowLeftCircleFill
