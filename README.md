@@ -4,13 +4,13 @@ An application where an individual writes journal for a week and the ai will hel
   
 ![](image/mood-journalss.png)
 
-- If anyone wants to contribute then:
+## If anyone wants to contribute then:
 - fork it , clone it and then
 - npm install
 - npm instal react-icons
 - npm i socket.io-client
 
-  for generative Ai:
+  ## for generative Ai:
 - npm install @google/generative-ai
 - get the api key - visit [google gemini for developer](https://ai.google.dev/)
   
