@@ -24,6 +24,7 @@ const Header = () => {
   const spanClass =
     "  rounded-full p-2 text-center bg-gradient-to-tr from-yellow-200 to-yellow-700 shadow-lg shadow-gray-500 hover:cursor-pointer ";
 
+  console.log("clicked: ", clicked);
   return (
     <>
       {
