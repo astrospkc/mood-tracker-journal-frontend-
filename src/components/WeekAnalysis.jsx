@@ -77,7 +77,15 @@ const WeekAnalysis = () => {
       </div>
       {/* gather all the journals here */}
       <div>
-        <BarChart data={arr} />
+        {data && data.length > 0 ? (
+          <BarChart data={data} />
+        ) : (
+          <div className="flex justify-center items-center yusei-magic-regular  ">
+            {" "}
+            Data is yet to retrieved. First go to journal page and click on the
+            journal and then click on the summarize button.
+          </div>
+        )}
       </div>
     </>
   );
