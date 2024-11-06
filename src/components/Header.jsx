@@ -64,12 +64,13 @@ const Header = () => {
       ) : (
         <div className={`${clicked ? "block  md:flex " : "hidden md:flex"}`}>
           <div className="flex flex-col md:flex-row gap-4">
-            <span className={`${spanClass}`}>Home</span>
-
-            <span className={`${spanClass}`}>
+            <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
+              <Link to="/">Home</Link>
+            </span>
+            <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
               <Link to="/signin">SignIn</Link>
             </span>
-            <span className={`${spanClass}`}>
+            <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
               <Link to="/signup">SignUp</Link>
             </span>
           </div>
