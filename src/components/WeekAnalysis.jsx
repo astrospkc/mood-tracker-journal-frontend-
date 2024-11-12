@@ -78,7 +78,7 @@ const WeekAnalysis = () => {
       {/* gather all the journals here */}
       <div>
         {data && data.length > 0 ? (
-          <BarChart data={data} />
+          <BarChart data={arr} />
         ) : (
           <div className="flex justify-center items-center yusei-magic-regular  ">
             {" "}
