@@ -48,11 +48,24 @@ const WeekDayCard = (props) => {
     }
   };
   console.log("day id: ", day._id);
+
+  let formattedDate = "";
+  if (day && day.date) {
+    const date = new Date(day.date);
+    const d = date.getUTCDate(); // Get the day of the month (1-31)
+    const month = date.getUTCMonth() + 1; // Get the month (0-11, so add 1)
+    const year = date.getUTCFullYear(); // Get the full year (YYYY)
+    formattedDate = `${d}-${month}-${year}`;
+    console.log(formattedDate);
+  }
+
   return (
     <>
       <div className="p-4 rounded-3xl shadow-lg shadow-stone-500 bg-cyan-950 text-yellow-500 yusei-magic-regular hover:bg-cyan-900 hover:cursor-pointer">
         <div className="justify-between flex">
           <h1 className="border-b-2 border-yellow-500">{day.title}</h1>
+          <h1 className=" border-yellow-300">{formattedDate}</h1>
+
           <BiSolidTrashAlt
             className="text-xl hover:text-white"
             onClick={handleDelete}

@@ -43,13 +43,27 @@ const JournalCard = ({ journal }) => {
     }
   };
 
+  let formattedDate = "";
+  if (journal && journal.date) {
+    const date = new Date(journal.date);
+    const day = date.getUTCDate(); // Get the day of the month (1-31)
+    const month = date.getUTCMonth() + 1; // Get the month (0-11, so add 1)
+    const year = date.getUTCFullYear(); // Get the full year (YYYY)
+    formattedDate = `${day}-${month}-${year}`;
+    console.log(formattedDate);
+  }
+
   return (
-    <div className="flex flex-col md:flex-row items-center gap-4">
+    <div className="flex flex-col md:flex-row items-center gap-4 yusei-magic-regular">
       <div
         onClick={handleJournalCard}
         className="flex flex-row gap-10 w-fit  justify-between items-center shadow-lg shadow-stone-700 rounded-3xl p-4 px-9 my-3 hover:cursor-pointer hover:bg-yellow-500"
       >
-        <div className="text-3xl">{journal?.title} </div>
+        <div className="flex flex-col gap-2">
+          <div className="text-3xl">{journal?.title} </div>
+          <div className="text-xl text-gray-500">{formattedDate}</div>
+        </div>
+
         <div className="">
           <img
             src={card}
@@ -60,10 +74,12 @@ const JournalCard = ({ journal }) => {
           />
         </div>
       </div>
-      <BiSolidTrashAlt
-        onClick={handleDelete}
-        className="text-xl hover:cursor-pointer hover:text-yellow-600"
-      />
+      <div className="border-2 border-gray-400 p-4 rounded-3xl hover:bg-yellow-500">
+        <BiSolidTrashAlt
+          onClick={handleDelete}
+          className="text-xl hover:cursor-pointer hover:text-yellow-600 "
+        />
+      </div>
     </div>
   );
 };
