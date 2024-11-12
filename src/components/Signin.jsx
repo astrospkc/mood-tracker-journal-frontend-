@@ -34,8 +34,8 @@ const Signin = () => {
     );
 
     const data = res.data;
-    console.log("user signin data: ", data);
-    console.log("authtoken generated when signed in : ", data.authtoken);
+    // console.log("user signin data: ", data);
+    // console.log("authtoken generated when signed in : ", data.authtoken);
     setUser(data);
     setLoading(false);
     if (data.authtoken) {

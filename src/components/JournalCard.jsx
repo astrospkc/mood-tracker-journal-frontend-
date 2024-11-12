@@ -18,7 +18,7 @@ const JournalCard = ({ journal }) => {
 
   const handleDelete = async () => {
     const token = localStorage.getItem("token");
-    console.log("journal to delete: ", journal._id);
+    // console.log("journal to delete: ", journal._id);
     try {
       const res = await axios.delete(
         `${import.meta.env.VITE_URL}/journals/deleteJournal/${journal._id}`,
@@ -50,7 +50,7 @@ const JournalCard = ({ journal }) => {
     const month = date.getUTCMonth() + 1; // Get the month (0-11, so add 1)
     const year = date.getUTCFullYear(); // Get the full year (YYYY)
     formattedDate = `${day}-${month}-${year}`;
-    console.log(formattedDate);
+    // console.log(formattedDate);
   }
 
   return (

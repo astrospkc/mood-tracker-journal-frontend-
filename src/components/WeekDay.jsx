@@ -64,7 +64,7 @@ const WeekDay = () => {
     journal_with_id();
   }, [id]);
 
-  console.log("main journal: ", mainJournal);
+  // console.log("main journal: ", mainJournal);
 
   // Handle back navigation
   const handleBack = () => {
@@ -137,7 +137,7 @@ const WeekDay = () => {
         throw new Error(`Error adding journal entry: ${res.statusText}`);
       }
       const data = res.data;
-      console.log("New journal added:", data);
+      // console.log("New journal added:", data);
       // Update state with the new entry
       setWeekJournal_Arr((prev) => [data, ...prev]);
       // Clear input fields after adding
@@ -156,7 +156,7 @@ const WeekDay = () => {
   // Handle add button click
   const handleAdd = () => {
     weekJournalDay(dayJournal);
-    console.log("Adding new journal...");
+    // console.log("Adding new journal...");
 
     // Navigate after a slight delay to allow for state update
     setTimeout(() => {
@@ -166,7 +166,6 @@ const WeekDay = () => {
 
   // Handle update functionality (if needed)
   const handleUpdate = async () => {
-    console.log("id: ", id);
     const token = localStorage.getItem("token");
 
     try {
@@ -188,8 +187,6 @@ const WeekDay = () => {
       }
 
       const data = res.data;
-      console.log("Updated data:", data);
-
       setWeekJournal_Arr((prev) =>
         prev.map((w) =>
           w._id === weekdayJournal._id
@@ -204,8 +201,6 @@ const WeekDay = () => {
     } catch (error) {
       console.error(error);
     }
-
-    console.log("Handling update");
   };
 
   console.log("week journal arr:", weekJournal_Arr);

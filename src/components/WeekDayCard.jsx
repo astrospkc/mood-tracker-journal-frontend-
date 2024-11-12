@@ -5,10 +5,7 @@ import axios from "axios";
 
 const WeekDayCard = (props) => {
   const { day, id } = props;
-  console.log("day: ", day);
-
   let body = day.body;
-  console.log("body: ", body);
   const navigate = useNavigate();
 
   if (body.length > 100) {
@@ -21,7 +18,6 @@ const WeekDayCard = (props) => {
   const handleDelete = async () => {
     const token = localStorage.getItem("token");
     try {
-      console.log("day id to confirm : ", day._id);
       if (day) {
         const res = await axios.delete(
           `${import.meta.env.VITE_URL}/weekJournals/deleteDayJournal/${
@@ -47,7 +43,6 @@ const WeekDayCard = (props) => {
       console.error(error);
     }
   };
-  console.log("day id: ", day._id);
 
   let formattedDate = "";
   if (day && day.date) {
@@ -56,7 +51,7 @@ const WeekDayCard = (props) => {
     const month = date.getUTCMonth() + 1; // Get the month (0-11, so add 1)
     const year = date.getUTCFullYear(); // Get the full year (YYYY)
     formattedDate = `${d}-${month}-${year}`;
-    console.log(formattedDate);
+    // console.log(formattedDate);
   }
 
   return (

@@ -9,10 +9,17 @@ import Header from "./Header";
 
 const JournalPage = () => {
   const navigate = useNavigate();
-  const { journals, setJournals, createJournal, setCreateJournal } =
-    useContext(journalContext);
+  const {
+    journals,
+    setJournals,
+    createJournal,
+    setCreateJournal,
+    journalLoading,
+    setJournalLoading,
+    fetchJournals,
+  } = useContext(journalContext);
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -22,40 +29,40 @@ const JournalPage = () => {
   };
 
   // getting all the journals associated with the user
-  const fetchJournals = async () => {
-    setIsLoading(true);
-    // setError(null);
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        throw new Error("No authentication token found");
-      }
+  // const fetchJournals = async () => {
+  //   setIsLoading(true);
+  //   // setError(null);
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     if (!token) {
+  //       throw new Error("No authentication token found");
+  //     }
 
-      const res = await axios.get(
-        `${import.meta.env.VITE_URL}/journals/fetchData`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Ensure token is provided correctly
-          },
-        }
-      );
-      console.log(res.data);
+  //     const res = await axios.get(
+  //       `${import.meta.env.VITE_URL}/journals/fetchData`,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`, // Ensure token is provided correctly
+  //         },
+  //       }
+  //     );
+  //     // console.log(res.data);
 
-      // if (!res.ok) {
-      //   throw new Error(`HTTP error! status: ${res.status}`);
-      // }
+  //     // if (!res.ok) {
+  //     //   throw new Error(`HTTP error! status: ${res.status}`);
+  //     // }
 
-      const data = res.data;
-      console.log("data obtained in journals: ", data);
-      setJournals(Array.isArray(data) ? data : []);
-    } catch (error) {
-      console.error("Error fetching journals:", error);
-      // setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //     const data = res.data;
+  //     console.log("data obtained in journals: ", data);
+  //     setJournals(Array.isArray(data) ? data : []);
+  //   } catch (error) {
+  //     console.error("Error fetching journals:", error);
+  //     // setError(error.message);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
     console.log("Fetching journals");
@@ -101,9 +108,9 @@ const JournalPage = () => {
     closeModal();
   };
 
-  console.log("journals: createdJournal: ", journals, createJournal);
+  // console.log("journals: createdJournal: ", journals, createJournal);
 
-  if (isLoading) {
+  if (journalLoading) {
     return (
       <div className="flex justify-center items-center h-screen bg-yellow-100">
         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-300"></div>

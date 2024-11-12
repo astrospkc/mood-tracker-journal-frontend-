@@ -27,7 +27,8 @@ export const options = {
 };
 
 const BarChart = (data) => {
-  console.log(data);
+  const parsedData = JSON.parse(data.data);
+  console.log("parsed data: ", parsedData);
   const labels = [
     "anger",
     "joy",
@@ -37,20 +38,24 @@ const BarChart = (data) => {
     "adventurous",
     "loneliness",
   ];
-
-  console.log("data in week analysis: ", data);
   let values = [];
-  if (data && data.data.length > 0) {
+
+  // Check if parsedData is an object and not empty
+  if (parsedData) {
     values = [
-      data.data[0].anger,
-      data.data[0].joy,
-      data.data[0].sadness,
-      data.data[0].happiness,
-      data.data[0].chilled,
-      data.data[0].adventurous,
-      data.data[0].loneliness,
+      parsedData.anger,
+      parsedData.joy,
+      parsedData.sadness,
+      parsedData.happiness,
+      parsedData.chilled || 0, // Default to 0 if property does not exist
+      parsedData.adventurous || 0, // Default to 0 if property does not exist
+      parsedData.loneliness,
     ];
   }
+
+  // Log the values to see if they are updated
+  console.log("Values:", values);
+
   const emotions_data = {
     labels,
     datasets: [

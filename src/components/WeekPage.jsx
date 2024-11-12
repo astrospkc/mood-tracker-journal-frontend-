@@ -8,7 +8,6 @@ import WeekDayCard from "./WeekDayCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
-import { div, li } from "framer-motion/client";
 
 const WeekPage = () => {
   const navigate = useNavigate();
@@ -18,17 +17,17 @@ const WeekPage = () => {
   const { clickedJournal, setClickedJournal } = useContext(journalContext);
   setClickedJournal(journal);
 
-  console.log("clicked journal that is passed: ", clickedJournal);
+  // console.log("clicked journal that is passed: ", clickedJournal);
 
   const handleBack = () => {
-    console.log("clicked");
+    // console.log("clicked");
     navigate(`/journals`);
   };
 
   const [ai_summary, setAi_Summary] = useState();
 
   const { weekJournal_Arr, setWeekJournal_Arr } = useContext(journalContext);
-  console.log(weekJournal_Arr);
+  // console.log(weekJournal_Arr);
 
   const allWeekJournal = async () => {
     const token = localStorage.getItem("token");
@@ -86,11 +85,11 @@ const WeekPage = () => {
     }
   };
   let parsed_summary;
-  console.log("week journal arr: ", weekJournal_Arr);
+  // console.log("week journal arr: ", weekJournal_Arr);
   if (ai_summary) {
     parsed_summary = JSON.parse(ai_summary);
   }
-  console.log("ai summary: ", parsed_summary);
+  // console.log("ai summary: ", parsed_summary);
 
   return (
     <>
