@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Chonburi&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Londrina+Shadow&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Stylish&family=Yusei+Magic&display=swap');
+
+
+.home-box{
+    	width: 200px;
+	height: 200px;
+	transform: skew(40deg);
+	background: rgb(9, 189, 212);
+    padding: 4px;
+
+}
+
+.londrina-shadow-regular {
+  font-family: "Londrina Shadow", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100px;
+  color:white;
+  text-shadow: 2px 2px 1px rgb(249, 249, 26)
+}
+
+.chonburi-regular {
+  font-family: "Chonburi", serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size:5px;
+}
+
+.yusei-magic-tab {
+  font-family: "Yusei Magic", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 30px;
+  text-shadow: 0px 12px 10px rgba(141, 139, 139, 0.25);
+}

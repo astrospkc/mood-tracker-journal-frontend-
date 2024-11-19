@@ -27,7 +27,12 @@ export const options = {
 };
 
 const BarChart = (data) => {
-  const parsedData = JSON.parse(data.data);
+  console.log("data in barchat: ", data, data.data);
+  let parsedData;
+  if (data && data.data.length > 0) {
+    parsedData = JSON.parse(data.data);
+  }
+
   console.log("parsed data: ", parsedData);
   const labels = [
     "anger",

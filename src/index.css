@@ -30,7 +30,9 @@
   font-family: "Chonburi", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 80px;
+  font-size: 50px;
+  text-shadow: 2px 4px 10px rgba(12, 8, 8, 0.5);
+
 }
 
 .yusei-magic-regular {

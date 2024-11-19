@@ -23,36 +23,42 @@ const Header = () => {
 
   console.log("clicked: ", clicked);
   return (
-    <>
+    <div className="flex sm:flex-col ms:flex-row fixed md:static justify-start md:justify-center  z-10 md:items-center md:p-4 md:shadow-xl  md:shadow-slate-950 md:bg-slate-900 ">
       {
-        <div className="md:hidden">
+        <div className="md:hidden p-4">
           {clicked ? (
             <BsFillArrowDownSquareFill
               onClick={handleToggle}
-              className="text-xl "
+              className="text-2xl  text-yellow-400"
             />
           ) : (
             <BsFillArrowRightSquareFill
               onClick={handleToggle}
-              className="text-xl"
+              className="text-2xl text-yellow-400"
             />
           )}
         </div>
       }
 
       {isAuthenticated ? (
-        <div className={`${clicked ? "block  md:flex " : "hidden md:flex"}`}>
+        <div
+          className={`${
+            clicked
+              ? " block w-fit md:w-full justify- md:flex bottom-1/2"
+              : "hidden md:flex"
+          }`}
+        >
           <div className="flex flex-col md:flex-row gap-4 yusei-magic-regular ">
             <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
               <Link to="/">Home</Link>
             </span>
             <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900 hover:cursor-pointer  hover:scale-95">
-              <Link to="/weeklyAnalysis">Week Analysis</Link>
+              <Link to="/weeklyAnalysis">About</Link>
             </span>
 
-            <span className="p-2 bg-orange-300  rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900 hover:cursor-pointer  hover:scale-95">
+            {/* <span className="p-2 bg-orange-300  rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900 hover:cursor-pointer  hover:scale-95">
               <Link to="/journals">Journals</Link>
-            </span>
+            </span> */}
             <button
               onClick={handleLogout}
               className="p-2 bg-stone-500 rounded-3xl hover:bg-yellow-100 shadow-lg shadow-stone-900  hover:scale-95"
@@ -62,8 +68,12 @@ const Header = () => {
           </div>
         </div>
       ) : (
-        <div className={`${clicked ? "block  md:flex " : "hidden md:flex"}`}>
-          <div className="flex flex-col md:flex-row gap-4">
+        <div
+          className={`${
+            clicked ? "block w-1/2 md:w-full md:flex " : "hidden md:flex"
+          }`}
+        >
+          <div className="flex flex-col md:flex-row gap-4 ">
             <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
               <Link to="/">Home</Link>
             </span>
@@ -76,7 +86,7 @@ const Header = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,16 +1,9 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import BarChart from "./chart/BarChart";
 import axios from "axios";
 import { journalContext } from "../context/JournalContext";
 import Header from "./Header";
 import months from "./month";
-import { div } from "framer-motion/client";
 import JournalCard from "./JournalCard";
 
 const WeekAnalysis = () => {
@@ -87,19 +80,6 @@ const WeekAnalysis = () => {
     const data = feels[0].emotions;
     // console.log("data: ", data);
     arr = data;
-
-    // for (let it of data) {
-    //   console.log("it: ", it);
-    // }
-    // for (let i = 0; i < data.length; i++) {
-    //   console.log("data[i]: ", data[i]);
-    //   try {
-    //     arr.push(JSON.parse(data[i]));
-    //   } catch (e) {
-    //     console.error("Error parsing emotions:", e);
-    //     arr.push(null); // Push null or handle the error as needed
-    //   }
-    // }
   }
 
   // console.log("selected journal id: ", selectedJournalId);
@@ -146,7 +126,10 @@ const WeekAnalysis = () => {
                 }
               })
               .map((journal) => (
-                <div key={journal._id} className=" grid grid-cols-2">
+                <div
+                  key={journal._id}
+                  className=" grid grid-cols-2 justify-center items-center"
+                >
                   <div className="flex flex-col justify-center items-center">
                     <JournalCard journal={journal} />
                     <button

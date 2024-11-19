@@ -112,14 +112,14 @@ const JournalPage = () => {
 
   if (journalLoading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-yellow-100">
+      <div className="flex justify-center items-center h-screen bg-slate-700">
         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-300"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col bg-yellow-100 p-4 justify-center m-auto w-full items-center overflow-y-scroll min-h-screen">
+    <div className="flex flex-col  p-4 justify-center m-auto w-full items-center overflow-y-scroll min-h-screen">
       <div
         className={`   m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
       >
@@ -180,13 +180,11 @@ const JournalPage = () => {
       <div className="w-full max-w-4xl space-y-4">
         {journals && journals.length > 0 ? (
           journals.map((journal) => (
-            <>
-              <JournalCard
-                key={journal._id}
-                journal={journal}
-                className="hover:cursor-pointer"
-              />
-            </>
+            <JournalCard
+              key={journal._id}
+              journal={journal}
+              className="hover:cursor-pointer"
+            />
           ))
         ) : (
           <div className="text-center py-8 text-gray-600">
