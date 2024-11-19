@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 // import debounce from "lodash.debounce";
 import debounce from "../miscellaneous/debounce";
 import axios from "axios";
+import Header from "./Header";
 
 const WeekDay = () => {
   const navigate = useNavigate();
@@ -205,66 +206,66 @@ const WeekDay = () => {
 
   console.log("week journal arr:", weekJournal_Arr);
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center ">
-      <div className="flex flex-row-reverse justify-around items-center">
-        <div className="flex flex-row items-center gap-4">
-          <BsArrowLeftCircleFill
-            onClick={handleBack}
-            className="text-xl md:text-3xl hover:text-yellow-50 hover:cursor-pointer"
-          />
-          <h1 className="chonburi-short">Journaling Day</h1>
+    <div className=" flex flex-col  ">
+      <Header />
+      <div className="h-[90vh] w-[90vh]  absolute  shadow-lg shadow-stone-800 -top-1/2  left-0 opacity-45 rounded-3xl rotate-45  bg-orange-300 "></div>
+      <div className="flex flex-col justify-center items-center w-full h-fit z-10 ">
+        <div className="flex flex-row-reverse justify-around items-center">
+          <div className="flex flex-row items-center gap-4">
+            <BsArrowLeftCircleFill
+              onClick={handleBack}
+              className="text-xl md:text-3xl hover:text-yellow-50 hover:cursor-pointer"
+            />
+            <h1 className="chonburi-short text-orange-300">Journaling Day</h1>
+          </div>
         </div>
 
-        <Link to="/">
-          <h1 className="bg-white p-2 mx-10 rounded-xl">Home</h1>
-        </Link>
-      </div>
+        <input
+          type="text"
+          name="title"
+          ref={inputRef}
+          defaultValue={weekdayJournal.title}
+          placeholder="What's your day about?"
+          onChange={handleTitleChange}
+          className="m-4 p-4 yusei-magic-regular rounded-xl bg-stone-300 w-2/3 text-2xl text-bold"
+        />
 
-      <input
-        type="text"
-        name="title"
-        ref={inputRef}
-        defaultValue={weekdayJournal.title}
-        placeholder="What's your day about?"
-        onChange={handleTitleChange}
-        className="m-4 p-4 yusei-magic-regular rounded-xl bg-stone-300 w-2/3"
-      />
+        <textarea
+          name="body"
+          rows={40}
+          ref={textRef}
+          defaultValue={weekdayJournal.body}
+          placeholder="Express your feelings and thoughts."
+          onChange={handleBodyChange}
+          className="bg-stone-400 rounded-3xl yusei-magic-regular shadow-lg textarea-placeholder text-black shadow-stone-800 w-2/3 p-4"
+        ></textarea>
 
-      <textarea
-        name="body"
-        rows={40}
-        ref={textRef}
-        defaultValue={weekdayJournal.body}
-        placeholder="Express your feelings and thoughts."
-        onChange={handleBodyChange}
-        className="bg-stone-400 rounded-3xl yusei-magic-regular shadow-lg textarea-placeholder text-black shadow-stone-800 w-2/3 p-4"
-      ></textarea>
+        <div className="flex flex-row items-end gap-4">
+          {!isAnotherDay &&
+          weekJournal_Arr.length > 0 &&
+          weekdayJournal.title.length > 0 ? (
+            <button
+              onClick={handleUpdate}
+              className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
+            >
+              Update
+            </button>
+          ) : (
+            <button
+              onClick={handleAdd}
+              className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
+            >
+              Add
+            </button>
+          )}
 
-      <div className="flex flex-row items-end gap-4">
-        {!isAnotherDay &&
-        weekJournal_Arr.length > 0 &&
-        weekdayJournal.title.length > 0 ? (
           <button
-            onClick={handleUpdate}
+            onClick={handleBack} // Implementing cancel functionality
             className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
           >
-            Update
+            Cancel
           </button>
-        ) : (
-          <button
-            onClick={handleAdd}
-            className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
-          >
-            Add
-          </button>
-        )}
-
-        <button
-          onClick={handleBack} // Implementing cancel functionality
-          className="bg-stone-200 rounded-3xl my-4 p-4 hover:bg-yellow-500"
-        >
-          Cancel
-        </button>
+        </div>
       </div>
     </div>
   );

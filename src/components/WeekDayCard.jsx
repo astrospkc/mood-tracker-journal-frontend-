@@ -56,7 +56,7 @@ const WeekDayCard = (props) => {
 
   return (
     <>
-      <div className="p-4 rounded-3xl shadow-lg shadow-stone-500 bg-cyan-950 text-yellow-500 yusei-magic-regular hover:bg-cyan-900 hover:cursor-pointer">
+      <div className="p-4 rounded-3xl shadow-lg shadow-black bg-cyan-950 text-yellow-500 yusei-magic-regular hover:bg-cyan-900 hover:cursor-pointer">
         <div className="justify-between flex">
           <h1 className="border-b-2 border-yellow-500">{day.title}</h1>
           <h1 className=" border-yellow-300">{formattedDate}</h1>
@@ -69,7 +69,7 @@ const WeekDayCard = (props) => {
 
         <p
           onClick={handleClick}
-          className="hover:bg-white rounded-2xl p-2 my-2"
+          className="hover:bg-white  hover:text-black rounded-2xl p-2 my-2"
         >
           {body}
         </p>

@@ -54,13 +54,13 @@ const JournalCard = ({ journal }) => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-4 yusei-magic-regular">
+    <div className="flex flex-col md:flex-row items-center gap-4 yusei-magic-regular -z-10 ">
       <div
         onClick={handleJournalCard}
-        className="flex flex-row gap-10 w-fit  justify-between items-center shadow-lg shadow-stone-700 rounded-3xl p-4 px-9 my-3 hover:cursor-pointer hover:bg-yellow-500"
+        className="flex flex-row gap-10 w-fit  justify-between items-center shadow-lg shadow-stone-700 rounded-3xl text-white hover:text-black bg-slate-800 p-4 px-9 my-3 hover:cursor-pointer hover:bg-yellow-500"
       >
         <div className="flex flex-col gap-2">
-          <div className="text-3xl">{journal?.title} </div>
+          <div className="text-3xl ">{journal?.title} </div>
           <div className="text-xl text-gray-500">{formattedDate}</div>
         </div>
 
@@ -77,7 +77,7 @@ const JournalCard = ({ journal }) => {
       <div className="border-2 border-gray-400 p-4 rounded-3xl hover:bg-yellow-500">
         <BiSolidTrashAlt
           onClick={handleDelete}
-          className="text-xl hover:cursor-pointer hover:text-yellow-600 "
+          className="text-xl hover:cursor-pointer text-cyan-500 hover:text-yellow-600 "
         />
       </div>
     </div>
