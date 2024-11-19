@@ -126,8 +126,8 @@ const JournalPage = () => {
       <Header />
       {/* </div> */}
       <div className="flex flex-col p-4 justify-center m-auto w-full items-center ">
-        <div className="h-[90vh] w-[90vh]  absolute  shadow-lg shadow-stone-800 -top-1/2 left-0 opacity-25 rounded-3xl rotate-45 -z-4 bg-orange-300 "></div>
-        <div className="flex flex-row items-center gap-4">
+        <div className="h-[90vh] w-[90vh]  absolute  shadow-lg shadow-stone-800 -top-1/2 left-0 opacity-25 rounded-3xl rotate-45  bg-orange-300 "></div>
+        <div className="flex flex-row items-center gap-4 z-10">
           <BsArrowLeftCircleFill
             onClick={handleBack}
             className="text-xl md:text-3xl hover:text-yellow-50 hover:cursor-pointer"
@@ -179,7 +179,7 @@ const JournalPage = () => {
           </div>
         )}
 
-        <div className="w-full max-w-4xl space-y-4">
+        <div className="w-full max-w-4xl space-y-4 z-10">
           {journals && journals.length > 0 ? (
             journals.map((journal) => (
               <JournalCard

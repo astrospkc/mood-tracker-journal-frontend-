@@ -87,20 +87,18 @@ const WeekAnalysis = () => {
 
   return (
     <>
-      <div className="bg-black">
-        <div
-          className={`p-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
-        >
-          <Header />
-        </div>
+      <div className="">
+        <Header />
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
-        <div className="chonburi-regular text-cyan-900 text-center">
+        <div className="chonburi-regular text-cyan-700 text-center">
           <h1>Weekly Analysis</h1>
         </div>
         {/* select the month and get all the journal to be displayed and according to that get the weekly update */}
         <div className=" flex  flex-col justify-center items-center  yusei-magic-regular gap-3 text-xl ">
-          <h1>Choose your month to get the analysis graph</h1>
+          <h1 className="text-orange-300">
+            Choose your month to get the analysis graph
+          </h1>
           <select
             name="months"
             id=""
@@ -144,7 +142,7 @@ const WeekAnalysis = () => {
         </div>
         <div>
           {journals && journals.length > 0 ? (
-            <div className="p-10">
+            <div className="p-10 ">
               <BarChart data={arr} />
             </div>
           ) : (

@@ -54,7 +54,7 @@ const JournalCard = ({ journal }) => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-4 yusei-magic-regular -z-10 ">
+    <div className="flex flex-col md:flex-row items-center gap-4 yusei-magic-regular z-10 ">
       <div
         onClick={handleJournalCard}
         className="flex flex-row gap-10 w-fit  justify-between items-center shadow-lg shadow-stone-700 rounded-3xl text-white hover:text-black bg-slate-800 p-4 px-9 my-3 hover:cursor-pointer hover:bg-yellow-500"

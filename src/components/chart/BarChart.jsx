@@ -73,7 +73,7 @@ const BarChart = (data) => {
   };
 
   return (
-    <div>
+    <div className="w-[50%] p-4 border-x-2 rounded-3xl border-gray-500">
       <Bar data={emotions_data} />
     </div>
   );
