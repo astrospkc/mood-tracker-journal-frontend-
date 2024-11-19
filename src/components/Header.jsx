@@ -44,11 +44,11 @@ const Header = () => {
         <div
           className={`${
             clicked
-              ? " block w-fit md:w-full justify- md:flex bottom-1/2"
+              ? " block w-fit md:w-full justify- md:flex "
               : "hidden md:flex"
           }`}
         >
-          <div className="flex flex-col md:flex-row gap-4 yusei-magic-regular ">
+          <div className="flex flex-col sm:ml-4 md:flex-row gap-4 yusei-magic-regular ">
             <span className="p-2 bg-orange-300 rounded-3xl hover:bg-yellow-100 shadow-lg  shadow-stone-900 hover:cursor-pointer  hover:scale-95 ">
               <Link to="/">Home</Link>
             </span>

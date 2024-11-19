@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import Homepage from "./components/Homepage";
+
 import JournalPage from "./components/JournalPage";
 import WeekPage from "./components/WeekPage";
 
@@ -14,7 +14,6 @@ import { UserContext } from "./context/UserContext";
 
 import WeekAnalysis from "./components/WeekAnalysis";
 import Homepage1 from "./components/Homepage1";
-import Header from "./components/Header";
 
 function App() {
   const { isAuthenticated } = useContext(UserContext);
