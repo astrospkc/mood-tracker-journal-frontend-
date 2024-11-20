@@ -106,7 +106,7 @@ const WeekPage = () => {
                 onClick={handleBack}
                 className="text-xl md:text-3xl hover:text-yellow-50 cursor-pointer"
               />
-              <h1 className="chonburi-regular text-orange-300">
+              <h1 className="md:chonburi-regular yusei-magic-tab text-orange-300">
                 The Daily Journaling
               </h1>
             </div>
@@ -114,7 +114,7 @@ const WeekPage = () => {
 
           {weekJournal_Arr && weekJournal_Arr.length > 0 ? (
             <div className="m-4 p-4">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {weekJournal_Arr.map((day) => (
                   <WeekDayCard key={day._id} day={day} id={id} />
                 ))}

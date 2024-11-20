@@ -23,7 +23,7 @@
   font-family: "Chonburi", serif;
   font-weight: 200;
   font-style: normal;
-  font-size:5px;
+  /* font-size:5px; */
 }
 
 .yusei-magic-tab {
@@ -33,3 +33,11 @@
   font-size: 30px;
   text-shadow: 0px 12px 10px rgba(141, 139, 139, 0.25);
 }
+.yusei-magic-tab {
+  font-family: "Yusei Magic", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 90px;
+  text-shadow: 0px 12px 10px rgba(19, 18, 18, 0.25);
+}
+

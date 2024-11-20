@@ -47,8 +47,8 @@ const Homepage1 = () => {
             <h1>Journal</h1>
           </div>
 
-          <div>
-            <p className="text-start text-white  text-2xl yusei-magic-regular">
+          <div className="text-md md:text-lg">
+            <p className="text-start text-white   yusei-magic-regular">
               {" "}
               Get your weekly summarized{" "}
               <span className="rounded-full bg-yellow-300  px-3 text-black">
@@ -62,15 +62,15 @@ const Homepage1 = () => {
         {/* <div>
           <div className="h-[20vh] w-[20vh]  absolute  left-1/2 top-1/2 rounded-3xl rotate-45 -z-4 bg-orange-300 opacity-50"></div>
         </div> */}
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 mx-auto">
           <div className="h-[15vh] w-[15vh] md:h-[20vh] md:w-[25vh] flex  md:absolute  left-[45%] top-[40%] rounded-3xl -z-4 bg-gradient-to-bl from-black to-blue-950 hover:cursor-pointer hover:bg-gradient-to-bl hover:from-black hover:to-yellow-500 hover:scale-95 duration-300 shadow-md shadow-yellow-900  sm:justify-center sm:items-center my-10 ">
-            <div className=" md:h-[20vh] md:w-[25vh] sm:text-lg md:text-3xl   md:absolute left-[15%] top-[20%] sm:text-center sm:justify-center sm:items-center text-yellow-400 hover:text-black yusei-magic-tab ">
+            <div className="flex justify-center items-center m-auto md:h-[20vh] md:w-[25vh] text-lg md:text-3xl   md:absolute left-[15%] top-[20%]  text-yellow-400 hover:text-black yusei-magic-tab ">
               <Link to="/journals">Journals</Link>
             </div>
           </div>
 
           <div className="h-[15vh] w-[15vh] md:h-[20vh] md:w-[25vh] flex  md:absolute  left-[70%] top-[40%] rounded-3xl -z-4 bg-gradient-to-bl from-black to-blue-950 hover:cursor-pointer hover:bg-gradient-to-bl hover:from-black hover:to-yellow-500 hover:scale-95 duration-300 shadow-md shadow-yellow-900  sm:justify-center sm:items-center my-10 ">
-            <div className=" md:h-[20vh] md:w-[25vh] sm:text-lg md:text-3xl   md:absolute left-[15%] top-[20%] sm:text-center sm:justify-center sm:items-center text-yellow-400 hover:text-black yusei-magic-tab ">
+            <div className=" md:h-[20vh] md:w-[25vh] text-lg md:text-3xl   md:absolute left-[15%] top-[20%] text-center justify-center items-center m-auto text-yellow-400 hover:text-black yusei-magic-tab ">
               <Link to="/weeklyAnalysis">Weekly Analysis</Link>
             </div>
           </div>

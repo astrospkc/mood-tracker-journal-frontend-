@@ -132,9 +132,9 @@ const JournalPage = () => {
             onClick={handleBack}
             className="text-xl md:text-3xl hover:text-yellow-50 hover:cursor-pointer"
           />
-          <h1 className="chonburi-regular border-b-2 border-black text-orange-300">
+          <div className="yusei-magic-tab  border-b-2 border-black text-orange-300">
             The Journals
-          </h1>
+          </div>
         </div>
 
         {/* open a modal */}

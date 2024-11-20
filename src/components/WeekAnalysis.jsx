@@ -87,7 +87,7 @@ const WeekAnalysis = () => {
 
   return (
     <>
-      <div className="">
+      <div className="flex flex-col ">
         <Header />
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
@@ -113,32 +113,34 @@ const WeekAnalysis = () => {
           </select>
 
           {/* if the month of journal and selected journal is same ,then show all the journals and then graph */}
-          {journals &&
-            journals.length > 0 &&
-            journals
-              .filter((j) => {
-                const date = new Date(j.date).getMonth();
-                console.log("date: ", date);
-                if (date == selectedMonth) {
-                  return j;
-                }
-              })
-              .map((journal) => (
-                <div
-                  key={journal._id}
-                  className=" grid grid-cols-2 justify-center items-center"
-                >
-                  <div className="flex flex-col justify-center items-center">
-                    <JournalCard journal={journal} />
-                    <button
-                      onClick={() => handleSummarize(journal._id)}
-                      className="bg-blue-950 w-fit text-yellow-400 p-4 rounded-2xl "
-                    >
-                      Summarize
-                    </button>
+          <div className="grid justify-center items-center m-auto">
+            {journals &&
+              journals.length > 0 &&
+              journals
+                .filter((j) => {
+                  const date = new Date(j.date).getMonth();
+                  console.log("date: ", date);
+                  if (date == selectedMonth) {
+                    return j;
+                  }
+                })
+                .map((journal) => (
+                  <div
+                    key={journal._id}
+                    className="grid grid-cols-1 md:grid-cols-3 "
+                  >
+                    <div className="flex flex-col justify-center items-center">
+                      <JournalCard journal={journal} />
+                      <button
+                        onClick={() => handleSummarize(journal._id)}
+                        className="bg-blue-950 w-fit text-yellow-400 p-4 rounded-2xl hover:bg-black "
+                      >
+                        Summarize
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+          </div>
         </div>
         <div>
           {journals && journals.length > 0 ? (
