@@ -76,7 +76,7 @@ const WeekAnalysis = () => {
       }
     });
 
-    console.log("feels: ", feels);
+    // console.log("feels: ", feels);
     const data = feels[0].emotions;
     // console.log("data: ", data);
     arr = data;
@@ -87,7 +87,7 @@ const WeekAnalysis = () => {
 
   return (
     <>
-      <div className="flex flex-col ">
+      <div className="flex flex-col h-full ">
         <Header />
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
@@ -148,7 +148,7 @@ const WeekAnalysis = () => {
               <BarChart data={arr} />
             </div>
           ) : (
-            <div className="flex justify-center items-center yusei-magic-regular  ">
+            <div className=" text-white flex justify-center items-center yusei-magic-regular  ">
               {" "}
               Data is yet to retrieved. First go to journal page and click on
               the journal and then click on the summarize button.

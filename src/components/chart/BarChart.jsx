@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "chart.js";
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -33,7 +33,7 @@ const BarChart = (data) => {
     parsedData = JSON.parse(data.data);
   }
 
-  console.log("parsed data: ", parsedData);
+  // console.log("parsed data: ", parsedData);/
   const labels = [
     "anger",
     "joy",
@@ -59,9 +59,9 @@ const BarChart = (data) => {
   }
 
   // Log the values to see if they are updated
-  console.log("Values:", values);
+  // console.log("Values:", values);
 
-  const emotions_data = {
+  const emotions_data_bar = {
     labels,
     datasets: [
       {
@@ -72,9 +72,45 @@ const BarChart = (data) => {
     ],
   };
 
+  const pie_data = {
+    labels: ["Red", "Blue", "Yellow"],
+    datasets: [
+      {
+        label: "My First Dataset",
+        data: [300, 50, 100],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(54, 162, 235)",
+          "rgb(255, 205, 86)",
+        ],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  // const pie_data = {
+  //   labels,
+  //   datasets: [
+  //     {
+  //       label: "Emotions",
+  //       data: values,
+  //       backgroundColor: [
+  //         "rgb(255, 99, 132)",
+  //         "rgb(54, 162, 235)",
+  //         "rgb(255, 205, 86)",
+  //         "rgb(17, 184, 161)",
+  //         "rgb(135, 82, 191)",
+  //         "rgb(127, 202, 227)",
+  //         "rgb(77, 95, 133)",
+  //       ],
+  //       hoverOffset: 4,
+  //     },
+  //   ],
+  // };
+
   return (
-    <div className="w-[50%] p-4 border-x-2 rounded-3xl border-gray-500">
-      <Bar data={emotions_data} />
+    <div className=" text-white p-4 border-x-2 rounded-3xl border-gray-500  h-[400px] mb-20">
+      <Bar data={emotions_data_bar} />
     </div>
   );
 };
