@@ -14,6 +14,7 @@ import { UserContext } from "./context/UserContext";
 
 import WeekAnalysis from "./components/WeekAnalysis";
 import Homepage1 from "./components/Homepage1";
+import Homepage2 from "./components/Homepage2";
 
 function App() {
   const { isAuthenticated } = useContext(UserContext);
@@ -23,7 +24,7 @@ function App() {
       <div className="w-screen h-screen bg-slate-900 overflow-y-scroll">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Homepage1 />} />
+            <Route path="/" element={<Homepage2 />} />
             {isAuthenticated ? (
               <>
                 s
