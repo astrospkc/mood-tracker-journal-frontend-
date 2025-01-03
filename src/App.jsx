@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
 
 import WeekAnalysis from "./components/WeekAnalysis";
-import Homepage1 from "./components/Homepage1";
+// import Homepage1 from "./components/Homepage1";
 import Homepage2 from "./components/Homepage2";
 
 function App() {

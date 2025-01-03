@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { JournalProvider } from "./context/JournalContext.jsx";
 import { RefProvider } from "./context/RefProvider.jsx";
+import CardClickedProvider from "./context/CardClickedProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,7 +16,9 @@ createRoot(document.getElementById("root")).render(
         <JournalProvider>
           <ModalProvider>
             <RefProvider>
-              <App className="yusei-magic-regular" />
+              <CardClickedProvider>
+                <App className="yusei-magic-regular" />
+              </CardClickedProvider>
             </RefProvider>
           </ModalProvider>
         </JournalProvider>

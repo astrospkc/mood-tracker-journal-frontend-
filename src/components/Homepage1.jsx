@@ -3,7 +3,7 @@ import home from "../images/theHome.jpg";
 
 import Header from "./Header.jsx";
 import { useState } from "react";
-import { BsJournalRichtext } from "react-icons/bs";
+
 import "./styles.css";
 
 const Homepage1 = () => {
