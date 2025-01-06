@@ -31,7 +31,7 @@
   font-family: "Yusei Magic", serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 30px;
+  /* font-size: 500px; */
   text-shadow: 0px 12px 10px rgba(141, 139, 139, 0.25);
 }
 .yusei-magic-tab {

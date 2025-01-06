@@ -57,7 +57,7 @@ const JournalCard = ({ journal }) => {
     <div className="flex flex-col md:flex-row items-center gap-4 yusei-magic-regular z-10 ">
       <div className="flex flex-row gap-10 w-fit  justify-between items-center shadow-lg shadow-stone-900 rounded-3xl text-white hover:text-black bg-slate-800 p-4 px-9 my-3 hover:cursor-pointer hover:bg-yellow-500">
         <div className="flex flex-col gap-2">
-          <div onClick={handleJournalCard} className="text-xl md:text-3xl ">
+          <div onClick={handleJournalCard} className="text-xl md:text-2xl ">
             {journal?.title}{" "}
           </div>
           <div className="text-lg md:text-xl text-gray-500">

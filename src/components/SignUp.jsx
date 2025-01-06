@@ -68,11 +68,21 @@ const SignUp = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-slate-700">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-300"></div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col justify-center items-center m-auto w-full h-full p-4 ">
-        <div className="font-semibold rounded-xl  text-3xl my-4">Sign Up</div>
-        {loading ? <div>....loading</div> : <div></div>}
+        <div className="font-semibold rounded-xl  text-yellow-400 text-3xl my-4">
+          Sign Up
+        </div>
+        {/* {loading ? <div>....loading</div> : <div></div>} */}
         <form
           action="submit"
           className="bg-yellow-500 p-10 rounded-xl shadow-lg shadow-stone-600"
@@ -127,7 +137,7 @@ const SignUp = () => {
           Submit
         </button>
         <div className="flex flex-row my-2 gap-2 items-center">
-          <h1>Already have an account</h1>
+          <h1 className="text-yellow-400 text-xl">Already have an account</h1>
           <Link to="/signin">
             <button className="p-2 rounded-xl bg-stone-400 hover:bg-stone-200">
               SignIn

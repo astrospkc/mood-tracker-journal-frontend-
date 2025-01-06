@@ -8,6 +8,7 @@ import WeekDayCard from "./WeekDayCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import { Button } from "@chakra-ui/react";
 
 const WeekPage = () => {
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ const WeekPage = () => {
             <div className="flex flex-row items-center gap-4">
               <BsArrowLeftCircleFill
                 onClick={handleBack}
-                className="text-xl md:text-3xl hover:text-yellow-50 cursor-pointer"
+                className="text-xl md:text-3xl text-white hover:text-yellow-50 cursor-pointer"
               />
               <h1 className="md:chonburi-regular yusei-magic-tab text-orange-300">
                 The Daily Journaling
@@ -136,17 +137,32 @@ const WeekPage = () => {
               </div>
 
               {ai_summary && parsed_summary && (
-                <div className="mt-2 p-3 rounded-3xl bg-yellow-100 w-fit">
-                  <ul>
-                    <li>anger: {parsed_summary.anger}</li>
-                    <li>adventurous: {parsed_summary.adventurous}</li>
-                    <li>chilled: {parsed_summary.chilled}</li>
-                    <li>happiness: {parsed_summary.happiness}</li>
-                    <li>joy: {parsed_summary.joy}</li>
-                    <li>sadness: {parsed_summary.sadness}</li>
-                    <li>loneliness: {parsed_summary.loneliness}</li>
-                    <li>overall: {parsed_summary.overall}</li>
-                  </ul>
+                <div className="flex flex-col md:flex-row  mt-2 p-3 rounded-3xl  w-full yusei-magic-regular">
+                  <div className="w-[20%] mx-3 bg-red-300 rounded-3xl p-3">
+                    <ul>
+                      <li>anger: {parsed_summary.anger}</li>
+                      <li>adventurous: {parsed_summary.adventurous}</li>
+                      <li>chilled: {parsed_summary.chilled}</li>
+                      <li>happiness: {parsed_summary.happiness}</li>
+                      <li>joy: {parsed_summary.joy}</li>
+                      <li>sadness: {parsed_summary.sadness}</li>
+                      <li>loneliness: {parsed_summary.loneliness}</li>
+                      <li>overall: {parsed_summary.overall}</li>
+                    </ul>
+                  </div>
+                  <div className="w-[30%] mx-3 text-gray-400 rounded-3xl p-3 border-2 border-gray-500">
+                    <span className="text-slate-200 text-xl mr-3">
+                      Emotional Status:{" "}
+                    </span>
+                    {parsed_summary.emotional_status}
+                  </div>
+
+                  <div className="w-[50%] bg-gradient-to-br from-red-400 to-stone-600 p-3 rounded-2xl">
+                    <span className="text-slate-200 text-xl mr-3">
+                      Tips and improvements:
+                    </span>
+                    {parsed_summary.tips_and_improvements}
+                  </div>
                 </div>
               )}
             </div>
@@ -160,6 +176,13 @@ const WeekPage = () => {
               </div>
             </div>
           )}
+          <div>
+            <h1 className="text-white">See the graph ...</h1>
+            <Link to="/weeklyAnalysis">
+              {" "}
+              <Button>Weekly Analysis</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

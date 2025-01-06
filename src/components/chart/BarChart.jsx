@@ -33,6 +33,8 @@ const BarChart = (data) => {
     parsedData = JSON.parse(data.data);
   }
 
+  console.log("parsed data: ", parsedData);
+
   // console.log("parsed data: ", parsedData);/
   const labels = [
     "anger",
@@ -109,7 +111,17 @@ const BarChart = (data) => {
   // };
 
   return (
-    <div className=" text-white p-4 border-x-2 rounded-3xl border-gray-500  h-[400px] mb-20">
+    <div className=" text-white p-4  rounded-3xl   h-[400px] mb-20 yusei-magic-regular">
+      {parsedData && (
+        <div className="m-4">
+          {" "}
+          <span className="text-xl text-red-400">Tips and improvements :</span>
+          <span className=" rounded-lg p-2 text-gray-400">
+            {parsedData.tips_and_improvements}{" "}
+          </span>
+        </div>
+      )}
+
       <Bar data={emotions_data_bar} />
     </div>
   );

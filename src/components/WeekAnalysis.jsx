@@ -77,6 +77,7 @@ const WeekAnalysis = () => {
     });
 
     // console.log("feels: ", feels);
+    console.log("feels: ", feels);
     const data = feels[0].emotions;
     // console.log("data: ", data);
     arr = data;
@@ -87,7 +88,7 @@ const WeekAnalysis = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full ">
+      <div className="flex flex-col h-full w-full">
         <Header />
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
@@ -113,7 +114,7 @@ const WeekAnalysis = () => {
           </select>
 
           {/* if the month of journal and selected journal is same ,then show all the journals and then graph */}
-          <div className="grid justify-center items-center m-auto">
+          <div className="flex justify-center items-center m-auto w-full">
             {journals &&
               journals.length > 0 &&
               journals
@@ -127,7 +128,7 @@ const WeekAnalysis = () => {
                 .map((journal) => (
                   <div
                     key={journal._id}
-                    className="grid grid-cols-1 md:grid-cols-3 "
+                    className="grid grid-cols-1 md:grid-cols-2"
                   >
                     <div className="flex flex-col justify-center items-center">
                       <JournalCard journal={journal} />

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import back from "../images/thebackground.jpg";
 import { UserContext } from "../context/UserContext";
 import axios from "axios";
+import "./styles.css";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -55,6 +56,14 @@ const Signin = () => {
   };
   console.log("isAuthenticated: ", isAuthenticated);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-slate-700">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-300"></div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col justify-center items-center m-auto w-full h-full p-4 ">
@@ -64,9 +73,11 @@ const Signin = () => {
           className="relative justify-center items-center m-auto w-1/2 h-full rounded-full opacity-40 shadow-lg shadow-stone-700"
         />
         <div className="absolute top-10 ">
-          {loading ? <div>....loading</div> : <div></div>}
+          {/* {loading ? <div>....loading</div> : <div></div>} */}
           <div className="flex flex-col justify-center items-center">
-            <div className="font-semibold rounded-xl  text-3xl my-4">Login</div>
+            <div className="font-semibold rounded-xl yusei-magic-tab text-3xl my-4">
+              Login
+            </div>
             <form
               action="submit"
               className="bg-yellow-500 p-10 rounded-xl shadow-lg shadow-stone-600"
@@ -109,7 +120,9 @@ const Signin = () => {
             </button>
 
             <div className="flex flex-row my-2 gap-2 items-center">
-              <h1 className="">Dont have an account?</h1>
+              <h1 className="text-yellow-400 text-2xl">
+                Dont have an account?
+              </h1>
               <Link to="/signup">
                 <button className="p-2 rounded-xl bg-stone-400 hover:bg-stone-200">
                   SignUp
