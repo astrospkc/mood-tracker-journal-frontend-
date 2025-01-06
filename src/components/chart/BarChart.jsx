@@ -74,42 +74,6 @@ const BarChart = (data) => {
     ],
   };
 
-  const pie_data = {
-    labels: ["Red", "Blue", "Yellow"],
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: [300, 50, 100],
-        backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
-        ],
-        hoverOffset: 4,
-      },
-    ],
-  };
-
-  // const pie_data = {
-  //   labels,
-  //   datasets: [
-  //     {
-  //       label: "Emotions",
-  //       data: values,
-  //       backgroundColor: [
-  //         "rgb(255, 99, 132)",
-  //         "rgb(54, 162, 235)",
-  //         "rgb(255, 205, 86)",
-  //         "rgb(17, 184, 161)",
-  //         "rgb(135, 82, 191)",
-  //         "rgb(127, 202, 227)",
-  //         "rgb(77, 95, 133)",
-  //       ],
-  //       hoverOffset: 4,
-  //     },
-  //   ],
-  // };
-
   return (
     <div className=" text-white p-4  rounded-3xl   h-[400px] mb-20 yusei-magic-regular">
       {parsedData && (
