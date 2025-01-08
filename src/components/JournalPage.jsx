@@ -28,42 +28,6 @@ const JournalPage = () => {
     navigate("/");
   };
 
-  // getting all the journals associated with the user
-  // const fetchJournals = async () => {
-  //   setIsLoading(true);
-  //   // setError(null);
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     if (!token) {
-  //       throw new Error("No authentication token found");
-  //     }
-
-  //     const res = await axios.get(
-  //       `${import.meta.env.VITE_URL}/journals/fetchData`,
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`, // Ensure token is provided correctly
-  //         },
-  //       }
-  //     );
-  //     // console.log(res.data);
-
-  //     // if (!res.ok) {
-  //     //   throw new Error(`HTTP error! status: ${res.status}`);
-  //     // }
-
-  //     const data = res.data;
-  //     console.log("data obtained in journals: ", data);
-  //     setJournals(Array.isArray(data) ? data : []);
-  //   } catch (error) {
-  //     console.error("Error fetching journals:", error);
-  //     // setError(error.message);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
   useEffect(() => {
     console.log("Fetching journals");
     fetchJournals();
@@ -179,7 +143,7 @@ const JournalPage = () => {
           </div>
         )}
 
-        <div className="w-full max-w-4xl space-y-4 z-10">
+        <div className="w-full max-w-4xl space-y-4 z-10 grid grid-cols-1 gap-4 md:grid-cols-3">
           {journals && journals.length > 0 ? (
             journals.map((journal) => (
               <JournalCard

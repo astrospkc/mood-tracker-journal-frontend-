@@ -29,12 +29,12 @@ const Header = () => {
           {clicked ? (
             <BsFillArrowDownSquareFill
               onClick={handleToggle}
-              className="text-2xl  text-yellow-400"
+              className="text-2xl  text-black"
             />
           ) : (
             <BsFillArrowRightSquareFill
               onClick={handleToggle}
-              className="text-2xl text-yellow-400"
+              className="text-2xl text-black"
             />
           )}
         </div>
