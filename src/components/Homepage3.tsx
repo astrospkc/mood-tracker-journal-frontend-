@@ -68,7 +68,7 @@ const Homepage3 = () => {
                 </div>
 
             </div>
-            <div className='text-3xl text-yellow-400 justify-center items-center text-center border-t-2 border-slate-600 p-4 mt-10  rounded-xl w-fit m-auto'>
+            <div className='text-3xl text-yellow-400 justify-center items-center text-center border-t-2 border-slate-600 p-4 mt-20  rounded-xl w-fit m-auto'>
                 RECENT JOURNALS
             </div>
 
