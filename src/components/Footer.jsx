@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className=" text-yellow-600 w-full bg-slate-900 flex flex-row justify-center items-start  h-fit  bottom-0  p-4">
+    <div className=" text-yellow-600 w-full bg-black flex flex-row justify-center items-start  h-fit  bottom-0  p-4">
       {/* twitter, instagram, divnkedin, github */}
       <div className="flex-1">
         <h1 className="text-white my-3">Connect with us at -</h1>
@@ -43,6 +43,7 @@ const Footer = () => {
         <ul className="flex flex-col text-sm gap-2">
           <div>help divne - +91 123456789</div>
           <div>email - mood_tracker@gmail.com</div>
+          <div>lightMind@2025</div>
         </ul>
       </div>
     </div>

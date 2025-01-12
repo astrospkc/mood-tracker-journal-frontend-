@@ -18,9 +18,6 @@ const Header = () => {
     navigate("/");
   };
 
-  const spanClass =
-    "  rounded-full p-2 text-center bg-gradient-to-tr from-yellow-200 to-yellow-700 shadow-lg shadow-gray-800 hover:cursor-pointer  ";
-
   console.log("clicked: ", clicked);
   return (
     <div className="flex sm:flex-col ms:flex-row fixed md:static justify-start md:justify-center  z-10 md:items-center md:p-4 md:shadow-xl  md:shadow-slate-950 md:bg-slate-900 ">

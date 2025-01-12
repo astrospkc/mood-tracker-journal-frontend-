@@ -89,7 +89,6 @@ const WeekAnalysis = () => {
   return (
     <>
       <div className="flex flex-col h-full w-full">
-        <Header />
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
         <div className="chonburi-regular text-cyan-700 text-center">

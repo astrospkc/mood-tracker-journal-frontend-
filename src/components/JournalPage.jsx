@@ -84,11 +84,6 @@ const JournalPage = () => {
 
   return (
     <div className="flex flex-col ">
-      {/* <div
-        className={`   m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
-      > */}
-      <Header />
-      {/* </div> */}
       <div className="flex flex-col p-4 justify-center m-auto w-full items-center ">
         <div className="h-[90vh] w-[90vh]  absolute  shadow-lg shadow-stone-800 -top-1/2 left-0 opacity-25 rounded-3xl rotate-45  bg-orange-300 "></div>
         <div className="flex flex-row items-center gap-4 z-10">

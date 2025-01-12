@@ -95,11 +95,6 @@ const WeekPage = () => {
   return (
     <>
       <div className="flex flex-col  ">
-        {/* <div
-          className={`    m-10 top-0 left-0 flex flex-col gap-4 z-10 text-left  `}
-        > */}
-        <Header />
-        {/* </div> */}
         <div className="flex flex-col p-4 justify-center m-auto w-full items-center overflow-y-scroll">
           <div className="flex flex-row-reverse items-center mb-4">
             <div className="flex flex-row items-center gap-4">
@@ -108,7 +103,7 @@ const WeekPage = () => {
                 className="text-xl md:text-3xl text-white hover:text-yellow-50 cursor-pointer"
               />
               <h1 className="md:chonburi-regular yusei-magic-tab text-orange-300">
-                The Daily Journaling
+                Daily Journaling
               </h1>
             </div>
           </div>
