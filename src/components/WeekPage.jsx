@@ -109,8 +109,8 @@ const WeekPage = () => {
           </div>
 
           {weekJournal_Arr && weekJournal_Arr.length > 0 ? (
-            <div className="m-4 p-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="m-4 p-4 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
                 {weekJournal_Arr.map((day) => (
                   <WeekDayCard key={day._id} day={day} id={id} />
                 ))}
@@ -132,9 +132,16 @@ const WeekPage = () => {
               </div>
 
               {ai_summary && parsed_summary && (
-                <div className="flex flex-col md:flex-row  mt-2 p-3 rounded-3xl  w-full yusei-magic-regular">
-                  <div className="w-[20%] mx-3 bg-red-300 rounded-3xl p-3">
-                    <ul>
+                <div className="flex flex-col md:flex-row gap-2 justify-center items-center mt-2 p-3 rounded-3xl  w-full yusei-magic-regular">
+                  <div className="md:w-[20%] mx-3 bg-red-300 rounded-3xl p-3 w-[70%] justify-center items-center m-auto overflow-x-auto">
+                    <ul className="flex flex-row md:flex-col">
+                      <li className="mx-4 font-bold block md:hidden">
+                        <li className="border-b-2 border-black">Emotions</li>
+                        <li className="border-b-2 border-black">
+                          Stats (0-10)
+                        </li>
+                      </li>
+
                       <li>anger: {parsed_summary.anger}</li>
                       <li>adventurous: {parsed_summary.adventurous}</li>
                       <li>chilled: {parsed_summary.chilled}</li>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { UserContext } from "./UserContext";
 import axios from "axios";
@@ -18,15 +18,19 @@ export const UserProvider = ({ children }) => {
         },
       }
     );
+    console.log("response: ", response);
     setUser(response.data);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
+      if (!user) {
+        getUser();
+      }
     }
-  });
+  }, [isAuthenticated, user]);
 
   return (
     <UserContext.Provider

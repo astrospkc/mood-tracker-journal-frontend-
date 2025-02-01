@@ -13,6 +13,7 @@ const WeekAnalysis = () => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [summary, setSummary] = useState(null);
   const [selectedJournalId, setSelectedJournalId] = useState(0);
+  const [clickedTitle, setClickedTitle] = useState(false);
 
   useEffect(() => {
     fetchJournals();
@@ -67,6 +68,10 @@ const WeekAnalysis = () => {
     setSelectedJournalId;
   }, [selectedJournalId]);
 
+  const handleClicked = () => {
+    setClickedTitle(!clickedTitle);
+  };
+
   let arr = [];
   if (journals && selectedJournalId) {
     const feels = journals.filter((journal) => {
@@ -113,7 +118,7 @@ const WeekAnalysis = () => {
           </select>
 
           {/* if the month of journal and selected journal is same ,then show all the journals and then graph */}
-          <div className="flex justify-center items-center m-auto w-full">
+          <div className=" justify-center items-center m-auto flex flex-col w-full">
             {journals &&
               journals.length > 0 &&
               journals
@@ -125,18 +130,23 @@ const WeekAnalysis = () => {
                   }
                 })
                 .map((journal) => (
-                  <div
-                    key={journal._id}
-                    className="grid grid-cols-1 md:grid-cols-2"
-                  >
+                  <div key={journal._id} className="">
                     <div className="flex flex-col justify-center items-center">
-                      <JournalCard journal={journal} />
-                      <button
+                      <ul className="p-3 text-yellow-400 bg-black rounded-2xl">
+                        <li
+                          onClick={handleClicked}
+                          className="hover:text-white hover:cursor-pointer"
+                        >
+                          {journal.title}
+                        </li>
+                      </ul>
+
+                      {/* <button
                         onClick={() => handleSummarize(journal._id)}
-                        className="bg-blue-950 w-fit text-yellow-400 p-4 rounded-2xl hover:bg-black "
+                        className="bg-blue-950 w-fit text-yellow-400 py-2 px-4 rounded-2xl hover:bg-black "
                       >
                         Summarize
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 ))}

@@ -207,7 +207,7 @@ const WeekDay = () => {
   console.log("week journal arr:", weekJournal_Arr);
   return (
     <div className=" flex flex-col  ">
-      <Header />
+    
       <div className="h-[90vh] w-[90vh]  absolute  shadow-lg shadow-stone-800 -top-1/2  left-0 opacity-45 rounded-3xl rotate-45  bg-orange-300 "></div>
       <div className="flex flex-col justify-center items-center w-full h-fit z-10 ">
         <div className="flex flex-row-reverse justify-around items-center">

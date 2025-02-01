@@ -28,7 +28,7 @@ function App() {
         </div>
 
         <div className="flex overflow-y-hidden">
-          <div className="flex justify-start fixed md:static  bg-black md:bg-transparent z-10 ">
+          <div className="flex justify-start fixed md:static  bg-black md:bg-transparent z-10  ">
             <Siderbar />
           </div>
 
