@@ -73,11 +73,11 @@ const WeekAnalysis = () => {
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
         <div className="chonburi-regular text-cyan-700 text-center">
-          <h1>Weekly Analysis</h1>
+          <h1 className="text-5xl">Weekly Analysis</h1>
         </div>
         {/* select the month and get all the journal to be displayed and according to that get the weekly update */}
         <div className=" flex  flex-col justify-center items-center  yusei-magic-regular gap-3 text-xl ">
-          <h1 className="text-orange-300">
+          <h1 className="text-orange-300 ">
             Choose your month to get the analysis graph
           </h1>
           <select

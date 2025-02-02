@@ -32,7 +32,7 @@ const Siderbar = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between p-0 md:p-6 shadow-lg shadow-yellow-400 bg-transparent h-fit md:h-screen">
+    <div className="flex flex-col justify-between p-0 md:p-6 shadow-lg shadow-yellow-400 bg-transparent h-fit md:h-screen rounded-3xl md:rounded-none">
       {/* Header Section */}
 
       {/* Mobile Menu Toggle */}
