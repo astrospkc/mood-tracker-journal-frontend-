@@ -74,6 +74,9 @@ const BarChart = (data) => {
     ],
   };
 
+  console.log("parsed Data: ", parsedData);
+  console.log("emotions ", emotions_data_bar);
+
   return (
     <div className=" text-white p-4  rounded-3xl   h-[400px] mb-20 yusei-magic-regular">
       {parsedData && (

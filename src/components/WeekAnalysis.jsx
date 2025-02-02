@@ -5,6 +5,7 @@ import { journalContext } from "../context/JournalContext";
 import Header from "./Header";
 import months from "./month";
 import JournalCard from "./JournalCard";
+import WeekAnalysisCard from "./WeekAnalysisCard";
 
 const WeekAnalysis = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +13,11 @@ const WeekAnalysis = () => {
   const { journals, fetchJournals } = useContext(journalContext);
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [summary, setSummary] = useState(null);
-  const [selectedJournalId, setSelectedJournalId] = useState(0);
+
   const [clickedTitle, setClickedTitle] = useState(false);
+
+  const { selectedJournalId, setSelectedJournalId } =
+    useContext(journalContext);
 
   useEffect(() => {
     fetchJournals();
@@ -39,38 +43,10 @@ const WeekAnalysis = () => {
   }, [selectedMonth]);
 
   // summarize the data
-  const summarize = async (id) => {
-    const token = localStorage.getItem("token");
-    try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_URL}/weekJournals/summarizeJournal/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
 
-      const data = res.data;
-      console.log("summarized data: ", data);
-      setSummary(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleSummarize = (id) => {
-    setSelectedJournalId(id);
-    summarize(id);
-    console.log("click the summarize button");
-  };
   useEffect(() => {
     setSelectedJournalId;
   }, [selectedJournalId]);
-
-  const handleClicked = () => {
-    setClickedTitle(!clickedTitle);
-  };
 
   let arr = [];
   if (journals && selectedJournalId) {
@@ -118,7 +94,8 @@ const WeekAnalysis = () => {
           </select>
 
           {/* if the month of journal and selected journal is same ,then show all the journals and then graph */}
-          <div className=" justify-center items-center m-auto flex flex-col w-full">
+          <div className=" m-auto flex flex-col gap-4 w-fit bg-gray-700 p-4 rounded-xl ">
+            <div className="text-white border-b-2">Journals :</div>
             {journals &&
               journals.length > 0 &&
               journals
@@ -132,15 +109,24 @@ const WeekAnalysis = () => {
                 .map((journal) => (
                   <div key={journal._id} className="">
                     <div className="flex flex-col justify-center items-center">
-                      <ul className="p-3 text-yellow-400 bg-black rounded-2xl">
+                      <WeekAnalysisCard
+                        journalId={journal._id}
+                        journal={journal}
+                      />
+                      {/* <ul className="p-3 text-yellow-400 bg-black rounded-2xl my-3">
                         <li
                           onClick={handleClicked}
-                          className="hover:text-white hover:cursor-pointer"
+                          className="hover:bg-white hover:cursor-pointer"
                         >
                           {journal.title}
                         </li>
-                      </ul>
-
+                        {clickedTitle && (
+                          <div>
+                            <span>open</span>
+                            <span>Summarize</span>
+                          </div>
+                        )}
+                      </ul> */}
                       {/* <button
                         onClick={() => handleSummarize(journal._id)}
                         className="bg-blue-950 w-fit text-yellow-400 py-2 px-4 rounded-2xl hover:bg-black "

@@ -9,6 +9,7 @@ export const JournalProvider = ({ children }) => {
   const [journals, setJournals] = useState([]);
   // journals for a week for any journal
   const [weekJournal_Arr, setWeekJournal_Arr] = useState([]);
+  const [selectedJournalId, setSelectedJournalId] = useState(0);
   // creating a journal
   const [createJournal, setCreateJournal] = useState({
     title: "",
@@ -75,6 +76,8 @@ export const JournalProvider = ({ children }) => {
           journalLoading,
           setJournalLoading,
           fetchJournals,
+          selectedJournalId,
+          setSelectedJournalId,
         }}
       >
         {children}
