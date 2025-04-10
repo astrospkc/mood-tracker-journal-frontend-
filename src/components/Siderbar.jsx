@@ -32,9 +32,14 @@ const Siderbar = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between p-0 md:p-6 shadow-lg shadow-yellow-400 bg-transparent h-fit md:h-screen rounded-3xl md:rounded-none">
+    <div className="flex flex-col md:flex-row justify-between p-0 md:p-6 shadow-lg shadow-slate-900 bg-transparent h-fit md:h-screen rounded-3xl md:rounded-none">
       {/* Header Section */}
-
+      <div className="flex flex-row items-center text-yellow-400 text-center text-3xl p-2">
+        <span className="rounded-full px-2 shadow-lg shadow-yellow-300 font-serif">
+          Vritt
+        </span>
+        {/* <BsFillMoonStarsFill /> */}
+      </div>
       {/* Mobile Menu Toggle */}
       <div className="md:hidden p-4">
         {menuOpen ? (
@@ -51,43 +56,49 @@ const Siderbar = () => {
       </div>
 
       {/* Menu Section */}
-      <div className={`${menuOpen ? "block" : "hidden"} md:block`}>
-        {isAuthenticated ? (
-          <div className="flex flex-col space-y-3">
-            <div>
-              <NavComponents />
-            </div>
-            <Button
-              onClick={handleLogout}
-              className="mt-4 bg-red-500 hover:bg-red-600 text-white"
-            >
-              Logout
-            </Button>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-4">
-            <NavComponents />
-            <div className="flex flex-col gap-4">
-              <Button>
-                <Link to="/signin">Sign In</Link>
-              </Button>
-              <Button>
-                <Link to="/signup">Sign Up</Link>
-              </Button>
-            </div>
-          </div>
-        )}
-        <div className="flex p-6 border-t border-neutral-200/30">
-          <div className="flex items-center">
-            <div className="w-8 h-8 rounded-full bg-neutral-200"></div>
-            {user && (
-              <div className="ml-3">
-                <p className="text-sm font-medium text-white">{user.name}</p>
-                <p className="text-xs text-neutral-500">{user.email}</p>
+      <div className="flex flex-row">
+        <div className="flex flex-col md:flex-row pr-3">
+          <div className={`${menuOpen ? "block" : "hidden"} md:block`}>
+            {isAuthenticated ? (
+              <div className="flex flex-col md:flex-row space-y-3">
+                <div>
+                  <NavComponents />
+                </div>
+                <Button
+                  onClick={handleLogout}
+                  className="mt-4 bg-red-500 hover:bg-red-600 text-white"
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <div className="flex flex-col md:flex-row gap-4">
+                <NavComponents />
+                <div className="flex flex-col md:flex-row gap-4">
+                  <Button>
+                    <Link to="/signin">Sign In</Link>
+                  </Button>
+                  <Button>
+                    <Link to="/signup">Sign Up</Link>
+                  </Button>
+                </div>
               </div>
             )}
           </div>
         </div>
+        {user && (
+          <div className="flex flex-col md:flex-row p-2 border-neutral-200/30">
+            <div className="flex  items-center">
+              <div className="w-8 h-8 rounded-full bg-neutral-200"></div>
+              {user && (
+                <div className="ml-3">
+                  <p className="text-sm font-medium text-white">{user.name}</p>
+                  <p className="text-xs text-neutral-500">{user.email}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Footer Section */}

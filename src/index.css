@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yusei+Magic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yusei+Magic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Passions+Conflict&family=Tangerine:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,8 +17,7 @@
   font-variation-settings:
     "wdth" 100;
 
-  
-
+  background-color: black;
 }
 .chonburi-regular {
   font-family: "Chonburi", serif;
@@ -44,3 +45,26 @@
   color: #fefcbf; /* Light yellow color */
   opacity: 0.5; /* Ensures full opacity for Firefox */
 }
+/* use in writing blog */
+.tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 800;
+  font-size:70px;
+  font-style: normal;
+}
+.passions-conflict-regular {
+  font-family: "Passions Conflict", cursive;
+  font-weight: 800;
+  font-size:100px;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 800;
+  font-size:40px;
+  font-style: normal;
+}
+}
+

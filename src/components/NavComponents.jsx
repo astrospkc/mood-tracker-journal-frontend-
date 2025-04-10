@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const NavComponents = () => {
   return (
-    <div>
+    <div className="flex flex-col md:flex-row">
       <Link
         to="/"
         className="flex items-center px-6 py-3 text-white hover:bg-neutral-100 hover:text-neutral-900 transition-all duration-300"

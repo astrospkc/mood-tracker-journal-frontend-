@@ -78,18 +78,18 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center m-auto w-full h-full p-4 ">
+      <div className="flex flex-col justify-center items-center m-auto w-full h-full p-4 font-serif ">
         <div className="font-semibold rounded-xl  text-yellow-400 text-3xl my-4">
           Sign Up
         </div>
         {/* {loading ? <div>....loading</div> : <div></div>} */}
         <form
           action="submit"
-          className="bg-yellow-500 p-10 rounded-xl shadow-lg shadow-stone-600"
+          className="bg-black p-10 rounded-xl shadow-lg shadow-stone-500"
         >
-          <div className="flex flex-col gap-10">
-            <div className="flex flex-col">
-              <label htmlFor="Username" className="font-semibold">
+          <div className="flex flex-col gap-10 text-yellow-500">
+            <div className="flex flex-col ">
+              <label htmlFor="Username" className="font-semibold text-xl">
                 Username
               </label>
               <input
@@ -102,7 +102,7 @@ const SignUp = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="email" className="font-semibold">
+              <label htmlFor="email" className="font-semibold text-xl">
                 Email
               </label>
               <input
@@ -116,7 +116,7 @@ const SignUp = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="password" className="font-semibold">
+              <label htmlFor="password" className="font-semibold text-xl">
                 Password
               </label>
               <input
