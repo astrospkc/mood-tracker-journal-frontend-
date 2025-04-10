@@ -58,7 +58,7 @@ const Signin = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-700">
+      <div className="flex justify-center items-center h-screen w-full bg-transparent">
         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-yellow-300"></div>
       </div>
     );
@@ -67,12 +67,7 @@ const Signin = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center m-auto w-full h-full p-4 ">
-        <img
-          src={back}
-          alt="the background"
-          className="relative justify-center items-center m-auto w-1/2 h-full rounded-full opacity-40 shadow-lg shadow-stone-700"
-        />
-        <div className="absolute top-10 ">
+        <div className=" ">
           {/* {loading ? <div>....loading</div> : <div></div>} */}
           <div className="flex flex-col justify-center items-center">
             <div className="font-semibold rounded-xl yusei-magic-tab text-3xl my-4">
@@ -80,9 +75,9 @@ const Signin = () => {
             </div>
             <form
               action="submit"
-              className="bg-yellow-500 p-10 rounded-xl shadow-lg shadow-stone-600"
+              className="bg-black p-10 rounded-xl shadow-lg shadow-stone-600"
             >
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-10 text-yellow-500">
                 <div className="flex flex-col">
                   <label htmlFor="email" className="font-semibold">
                     Email

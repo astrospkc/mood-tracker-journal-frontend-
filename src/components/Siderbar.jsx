@@ -32,11 +32,11 @@ const Siderbar = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between p-0 md:p-6 shadow-lg shadow-slate-900 bg-transparent h-fit md:h-screen rounded-3xl md:rounded-none">
+    <div className="flex flex-col md:flex-row justify-between p-0 md:p-6 shadow-lg shadow-slate-900 bg-transparent h-fit rounded-3xl md:rounded-none items-center">
       {/* Header Section */}
       <div className="flex flex-row items-center text-yellow-400 text-center text-3xl p-2">
         <span className="rounded-full px-2 shadow-lg shadow-yellow-300 font-serif">
-          Vritt
+          Vritti
         </span>
         {/* <BsFillMoonStarsFill /> */}
       </div>
@@ -56,31 +56,31 @@ const Siderbar = () => {
       </div>
 
       {/* Menu Section */}
-      <div className="flex flex-row">
-        <div className="flex flex-col md:flex-row pr-3">
+      <div className="flex flex-row ">
+        <div className="flex flex-col md:flex-row pr-3 ">
           <div className={`${menuOpen ? "block" : "hidden"} md:block`}>
             {isAuthenticated ? (
-              <div className="flex flex-col md:flex-row space-y-3">
+              <div className="flex flex-col md:flex-row items-center justify-center">
                 <div>
                   <NavComponents />
                 </div>
-                <Button
+                <button
                   onClick={handleLogout}
-                  className="mt-4 bg-red-500 hover:bg-red-600 text-white"
+                  className="rounded-xl p-2 hover:bg-yellow-600 text-white"
                 >
                   Logout
-                </Button>
+                </button>
               </div>
             ) : (
               <div className="flex flex-col md:flex-row gap-4">
                 <NavComponents />
                 <div className="flex flex-col md:flex-row gap-4">
-                  <Button>
+                  <button>
                     <Link to="/signin">Sign In</Link>
-                  </Button>
-                  <Button>
+                  </button>
+                  <button>
                     <Link to="/signup">Sign Up</Link>
-                  </Button>
+                  </button>
                 </div>
               </div>
             )}

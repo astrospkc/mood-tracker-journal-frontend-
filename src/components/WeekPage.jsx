@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import WeekDayCard from "./WeekDayCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import Header from "./Header";
 import { Button } from "@chakra-ui/react";
 
 const WeekPage = () => {
@@ -94,15 +93,15 @@ const WeekPage = () => {
 
   return (
     <>
-      <div className="flex flex-col  ">
-        <div className="flex flex-col p-4 justify-center m-auto w-full items-center overflow-y-scroll">
+      <div className="flex flex-col font-serif   ">
+        <div className="flex flex-col p-4 justify-center m-auto w-full items-center ">
           <div className="flex flex-row-reverse items-center mb-4">
             <div className="flex flex-row items-center gap-4">
               <BsArrowLeftCircleFill
                 onClick={handleBack}
                 className="text-xl md:text-3xl text-white hover:text-yellow-50 cursor-pointer"
               />
-              <h1 className="md:chonburi-regular yusei-magic-tab text-orange-300">
+              <h1 className=" text-4xl md:text-6xl text-orange-300">
                 Daily Journaling
               </h1>
             </div>

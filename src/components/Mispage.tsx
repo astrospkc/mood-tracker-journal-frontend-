@@ -1,5 +1,5 @@
 import React from 'react'
-import illustrator from "../images/illustrator.jpg"
+
 import writeJournal from "../images/writeJournal.jpg"
 import readJournal from "../images/readJournal.jpg"
 import graph from "../images/graphAnalysis.jpg"
@@ -29,7 +29,7 @@ const Mispage = () => {
                         </h1>
 
 
-                        <span className='text-yellow-400 text-4xl md:text-7xl font-serif border-b '>Vritt </span>
+                        <span className='text-yellow-400 text-4xl md:text-7xl font-serif border-b '>Vritti </span>
                         <span className='text-white'>is here for you.</span>
 
                         <p className=' text-xl mt-4 px-4 md:px-20'>
@@ -48,37 +48,37 @@ const Mispage = () => {
                         <FeatureCard
                             image={writeJournal}
                             title="Daily Journaling"
-                            to="/journals"
+                            // to="/journals"
                             desc="Capture your thoughts and moods every day in a safe, private space."
                         />
                         <FeatureCard
                             image={readJournal}
                             title="AI-Powered Summaries"
-                            to="/journals"
+                            // to="/journals"
                             desc="Generate meaningful summaries and highlights from your journal entries."
                         />
                         <FeatureCard
                             image={graph}
                             title="Mood Analytics"
-                            to="/weeklyAnalysis"
+                            // to="/weeklyAnalysis"
                             desc="Track your emotions and growth visually over time with charts."
                         />
                         <FeatureCard
                             image={anonymous}
                             title="Anonymous Sharing"
-                            to="/share"
+                            // to="/share"
                             desc="Share your insights anonymously and discover others' journeys."
                         />
                         <FeatureCard
                             image={reply}
                             title="Community Feedback"
-                            to="/replies"
+                            // to="/replies"
                             desc="Receive kind, constructive advice and support from like-minded individuals."
                         />
                         <FeatureCard
                             image={community}
                             title="Uplifting Stories"
-                            to="/community"
+                            // to="/community"
                             desc="Get inspired by trending experiences and emotional breakthroughs."
                         />
                     </div>
@@ -98,7 +98,7 @@ const Mispage = () => {
 
                     {/* Footer */}
                     <div className='mt-20 text-stone-900 text-sm text-center'>
-                        © 2025 Vritt · Empowering Growth Through Reflection
+                        © 2025 Vritti · Empowering Growth Through Reflection
                     </div>
                 </div>
 
@@ -113,14 +113,14 @@ const Mispage = () => {
     )
 }
 
-const FeatureCard = ({ image, title, to, desc }) => (
-    <Link to={to} className='hover:scale-105 transition-all'>
-        <div className='bg-zinc-900 p-5 rounded-2xl shadow-md hover:shadow-yellow-400 text-center'>
-            <img src={image} alt={title} className='w-full h-48 object-cover rounded-xl mb-4' />
-            <h3 className='text-yellow-300 text-2xl font-semibold'>{title}</h3>
-            <p className='text-stone-400 mt-2'>{desc}</p>
-        </div>
-    </Link>
+const FeatureCard = ({ image, title, desc }) => (
+
+    <div className='bg-zinc-900 p-5 rounded-2xl shadow-md hover:shadow-yellow-400 text-center'>
+        <img src={image} alt={title} className='w-full h-48 object-cover rounded-xl mb-4' />
+        <h3 className='text-yellow-300 text-2xl font-semibold'>{title}</h3>
+        <p className='text-stone-400 mt-2'>{desc}</p>
+    </div>
+
 )
 
 export default Mispage

@@ -6,8 +6,7 @@ import { journalContext } from '../context/JournalContext'
 const WeekAnalysisCard = ({ journalId, journal }) => {
     const [clickedTitle, setClickedTitle] = useState(false)
     const [summary, setSummary] = useState(null)
-    const { selectedJournalId, setSelectedJournalId } =
-        useContext(journalContext);
+    const { selectedJournalId, setSelectedJournalId } = useContext(journalContext);
 
 
     const summarize = async (journalId) => {

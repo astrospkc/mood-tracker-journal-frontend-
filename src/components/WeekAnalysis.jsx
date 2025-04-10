@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import BarChart from "./chart/BarChart";
-import axios from "axios";
+
 import { journalContext } from "../context/JournalContext";
-import Header from "./Header";
+
 import months from "./month";
-import JournalCard from "./JournalCard";
+
 import WeekAnalysisCard from "./WeekAnalysisCard";
 
 const WeekAnalysis = () => {
@@ -13,8 +13,8 @@ const WeekAnalysis = () => {
   const { journals, fetchJournals } = useContext(journalContext);
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [summary, setSummary] = useState(null);
-
-  const [clickedTitle, setClickedTitle] = useState(false);
+  console.log(setSummary, setError, setIsLoading);
+  // const [clickedTitle, setClickedTitle] = useState(false);
 
   const { selectedJournalId, setSelectedJournalId } =
     useContext(journalContext);
@@ -69,10 +69,10 @@ const WeekAnalysis = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full w-full">
+      <div className="flex flex-col h-full w-full font-serif mt-5">
         {isLoading && <p>Loading...</p>} {/* Loading indicator */}
         {error && <p>Error: {error}</p>} {/* Display error message */}
-        <div className="chonburi-regular text-cyan-700 text-center">
+        <div className="text-4xl md:text-6xl text-yellow-500 text-center">
           <h1 className="text-5xl">Weekly Analysis</h1>
         </div>
         {/* select the month and get all the journal to be displayed and according to that get the weekly update */}
@@ -94,7 +94,7 @@ const WeekAnalysis = () => {
           </select>
 
           {/* if the month of journal and selected journal is same ,then show all the journals and then graph */}
-          <div className=" m-auto flex flex-col gap-4 w-fit bg-gray-700 p-4 rounded-xl ">
+          <div className=" m-auto flex flex-col gap-4 w-fit shadow-lg shadow-black bg-gradient-to-l from-black p-4 rounded-xl ">
             <div className="text-white border-b-2">Journals :</div>
             {journals &&
               journals.length > 0 &&
@@ -113,26 +113,6 @@ const WeekAnalysis = () => {
                         journalId={journal._id}
                         journal={journal}
                       />
-                      {/* <ul className="p-3 text-yellow-400 bg-black rounded-2xl my-3">
-                        <li
-                          onClick={handleClicked}
-                          className="hover:bg-white hover:cursor-pointer"
-                        >
-                          {journal.title}
-                        </li>
-                        {clickedTitle && (
-                          <div>
-                            <span>open</span>
-                            <span>Summarize</span>
-                          </div>
-                        )}
-                      </ul> */}
-                      {/* <button
-                        onClick={() => handleSummarize(journal._id)}
-                        className="bg-blue-950 w-fit text-yellow-400 py-2 px-4 rounded-2xl hover:bg-black "
-                      >
-                        Summarize
-                      </button> */}
                     </div>
                   </div>
                 ))}
