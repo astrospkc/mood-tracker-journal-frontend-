@@ -3,7 +3,6 @@
 **Vritti** (वृत्ति) — A Sanskrit term that captures the essence of *conscious thought*, *fluctuations of the mind*, and *emotional tides*.  
 This app helps you journal your daily experiences and visualize your emotional journey. Powered by AI, Vritti allows for deep reflection, clarity, and growth.
 
-![Mood Journal Screenshot](image/mood-journalss.png)
 
 ---
 
