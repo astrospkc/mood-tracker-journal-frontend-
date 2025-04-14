@@ -1,7 +1,7 @@
 # 🧠 Vritti – Mood Tracker Journal
 
 **Vritti** (वृत्ति) — A Sanskrit term that captures the essence of *conscious thought*, *fluctuations of the mind*, and *emotional tides*.  
-This app helps you journal your daily experiences and visualize your emotional journey. Powered by AI, Vritti allows for deep reflection, clarity, and growth.
+This app helps you journal your daily experiences and visualize your emotional journey. Powered by AI, Vritti allows for deep reflection, clarity, and growth.Vritti allows to get connected with the vritti community by sharing summarized journal.
 
 
 ---
