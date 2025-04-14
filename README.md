@@ -29,7 +29,7 @@ This app helps you journal your daily experiences and visualize your emotional j
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/vritti.git
+git clone [https://github.com/your-username/vritti.git](https://github.com/astrospkc/mood-tracker-journal-frontend-.git)
 
 # 2. Navigate to the project directory
 cd vritti
